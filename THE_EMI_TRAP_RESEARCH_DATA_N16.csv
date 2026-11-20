@@ -1,0 +1,17 @@
+Timestamp,Enter your age in years. ,What is your occupation?,  What is your approximate monthly personal income?  ,  Are you currently paying any EMI?  ,  Which EMI categories are you currently paying?  ,   What is your total monthly EMI payment?  ,  Do you face difficulty managing your EMI payments?  ,  How much do you save monthly after paying your expenses and EMIs?  
+11/13/2026 10:23:52,21,Student ,50000,yes,Other EMI,5000,Rarely,20000
+11/13/2026 22:12:28,21,College Student / Intern,12000,yes,BNPL (Buy Now Pay Later),2000,Often,500
+11/13/2026 22:12:35,27,Software Engineer,110000,yes,"Vehicle Loan EMI, Consumer Durable EMI",24000,Rarely,40000
+11/13/2026 22:12:40,38,High School Teacher,55000,yes,Personal Loan EMI,14000,Sometimes,12000
+11/13/2026 22:12:46,29,Sales Executive,38000,yes,"Vehicle Loan EMI, BNPL (Buy Now Pay Later)",11000,Often,3000
+11/13/2026 22:12:51,25,Graphic Designer,32000,yes,Consumer Durable EMI,5500,Sometimes,5000
+11/13/2026 22:12:56,45,Small Business Owner,135000,yes,"Personal Loan EMI, Vehicle Loan EMI, Other EMI",48000,Sometimes,30000
+11/13/2026 22:13:00,23,Delivery Partner,22000,yes,Vehicle Loan EMI,6000,Often,2000
+11/13/2026 22:13:05,42,Senior Accountant,85000,no,None,0,Never,35000
+11/13/2026 22:13:09,31,Marketing Specialist,72000,yes,"Personal Loan EMI, Consumer Durable EMI",21000,Rarely,18000
+11/13/2026 22:13:13,24,Call Center Agent,26000,yes,"Consumer Durable EMI, BNPL (Buy Now Pay Later)",9500,Always,0
+11/13/2026 22:13:18,36,Civil Engineer,68000,yes,Vehicle Loan EMI,15000,Rarely,16000
+11/13/2026 22:13:22,30,Staff Nurse,40000,yes,Personal Loan EMI,9000,Sometimes,7000
+11/13/2026 22:13:32,34,Management Consultant,160000,yes,"Vehicle Loan EMI, Other EMI",36000,Never,65000
+11/13/2026 22:13:37,26,Retail Store Assistant,24000,yes,BNPL (Buy Now Pay Later),4500,Often,1500
+11/13/2026 22:13:41,28,Data Analyst,65000,no,None,0,Never,28000
