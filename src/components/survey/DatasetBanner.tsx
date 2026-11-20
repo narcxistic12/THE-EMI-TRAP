@@ -11,14 +11,12 @@ export const DatasetBanner: React.FC = () => {
     isActualSurvey,
     isEmptyState,
     loadIllustrativeDemo,
-    loadSampleSurvey,
     loadResearchSurvey,
     removeActiveDataset,
     openUploadModal,
   } = useSurveyData();
 
   const isResearchCohort = activeDataset?.id === 'dataset-research-survey-16';
-  const isFieldSample = activeDataset?.id === 'dataset-field-sample-84';
 
   if (isEmptyState) {
     return (
@@ -68,16 +66,16 @@ export const DatasetBanner: React.FC = () => {
                 {activeDataset?.name}
               </h3>
               {isIllustrativeDemo && (
-                <Badge variant="setB" className="font-mono text-[10px]">
+                <Badge variant="setB" className="font-mono text-xs">
                   Illustrative Demonstration Model
                 </Badge>
               )}
               {isActualSurvey && (
-                <Badge variant="setA" className="font-mono text-[10px]">
+                <Badge variant="setA" className="font-mono text-xs">
                   Verified Survey Cohort
                 </Badge>
               )}
-              <span className="text-[11px] font-mono text-content-muted">
+              <span className="text-xs font-mono text-content-muted">
                 N = {activeDataset?.validRespondents} Valid Respondents
               </span>
             </div>
@@ -115,18 +113,7 @@ export const DatasetBanner: React.FC = () => {
             </Button>
           )}
 
-          {!isFieldSample && (
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={loadSampleSurvey}
-              className="text-xs font-mono gap-1.5 h-8"
-              title="Switch to empirical 84-respondent survey sample"
-            >
-              <FileSpreadsheet className="w-3.5 h-3.5" />
-              Field Sample (N=84)
-            </Button>
-          )}
+
 
           <Button
             size="sm"
@@ -152,7 +139,7 @@ export const DatasetBanner: React.FC = () => {
       </div>
 
       {/* Privacy & Source Note */}
-      <div className="pt-3 border-t border-surface-border/60 flex flex-col sm:flex-row sm:items-center sm:justify-between text-[11px] text-content-muted font-mono gap-2">
+      <div className="pt-3 border-t border-surface-border/60 flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs text-content-muted font-mono gap-2">
         <div className="flex items-center gap-1.5 text-brand">
           <ShieldCheck className="w-3.5 h-3.5" />
           <span>Privacy Guaranteed: In-browser memory processing only. Zero external network transfer.</span>

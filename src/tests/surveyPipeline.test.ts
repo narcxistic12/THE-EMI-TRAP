@@ -5,7 +5,7 @@ import { extractCategoriesFromText, validateSurveyRows } from '../lib/survey/sur
 import {
   buildSurveyDataset,
 } from '../lib/survey/surveyAggregator';
-import { SAMPLE_SURVEY_DATASET, generateSampleCsvContent } from '../data/sampleSurveyDataset';
+import { RESEARCH_SURVEY_DATASET, generateSampleCsvContent } from '../data/researchSurveyDataset';
 import { ILLUSTRATIVE_DATASET } from '../data/illustrativeDataset';
 import { calculateThreeSetPIE, verifyPieInvariants } from '../lib/math/inclusionExclusion';
 import { calculateDisjointRegions } from '../lib/math/vennRegions';
@@ -171,18 +171,18 @@ describe('Phase 5 & 6 — Survey Data Ingestion Pipeline & Analytics', () => {
   });
 
   describe('Mathematical Engine Integration on Survey Data', () => {
-    it('correctly aggregates Sample Field Survey Dataset (N=84) into exact set cardinalities', () => {
-      const dataset = SAMPLE_SURVEY_DATASET;
+    it('correctly aggregates Empirical Research Survey Dataset (N=16) into exact set cardinalities', () => {
+      const dataset = RESEARCH_SURVEY_DATASET;
       const setData = dataset.calculatedSetData;
 
-      expect(setData.totalRespondents).toBe(84);
-      expect(setData.setA).toBe(32);
-      expect(setData.setB).toBe(28);
-      expect(setData.setC).toBe(36);
-      expect(setData.intersectionAB).toBe(11);
-      expect(setData.intersectionAC).toBe(14);
-      expect(setData.intersectionBC).toBe(12);
-      expect(setData.intersectionABC).toBe(5);
+      expect(setData.totalRespondents).toBe(16);
+      expect(setData.setA).toBe(4);
+      expect(setData.setB).toBe(6);
+      expect(setData.setC).toBe(7);
+      expect(setData.intersectionAB).toBe(1);
+      expect(setData.intersectionAC).toBe(1);
+      expect(setData.intersectionBC).toBe(2);
+      expect(setData.intersectionABC).toBe(0);
 
       // Verify set input validity
       const valResult = validateSetInputs(setData);
@@ -191,27 +191,27 @@ describe('Phase 5 & 6 — Survey Data Ingestion Pipeline & Analytics', () => {
     });
 
     it('satisfies all 8 exclusive partition regions and PIE invariants for the empirical survey cohort', () => {
-      const setData = SAMPLE_SURVEY_DATASET.calculatedSetData;
+      const setData = RESEARCH_SURVEY_DATASET.calculatedSetData;
       const regions = calculateDisjointRegions(setData);
 
-      // R1: Only A = 32 - 11 - 14 + 5 = 12
-      expect(regions.onlyA).toBe(12);
-      // R2: Only B = 28 - 11 - 12 + 5 = 10
-      expect(regions.onlyB).toBe(10);
-      // R3: Only C = 36 - 14 - 12 + 5 = 15
-      expect(regions.onlyC).toBe(15);
-      // R4: Only AB = 11 - 5 = 6
-      expect(regions.onlyAB).toBe(6);
-      // R5: Only BC = 12 - 5 = 7
-      expect(regions.onlyBC).toBe(7);
-      // R6: Only AC = 14 - 5 = 9
-      expect(regions.onlyAC).toBe(9);
-      // R7: All Three = 5
-      expect(regions.allThree).toBe(5);
-      // R8: Outside = 84 - 64 = 20
-      expect(regions.outside).toBe(20);
+      // R1: Only A = 4 - 1 - 1 + 0 = 2
+      expect(regions.onlyA).toBe(2);
+      // R2: Only B = 6 - 1 - 2 + 0 = 3
+      expect(regions.onlyB).toBe(3);
+      // R3: Only C = 7 - 1 - 2 + 0 = 4
+      expect(regions.onlyC).toBe(4);
+      // R4: Only AB = 1 - 0 = 1
+      expect(regions.onlyAB).toBe(1);
+      // R5: Only BC = 2 - 0 = 2
+      expect(regions.onlyBC).toBe(2);
+      // R6: Only AC = 1 - 0 = 1
+      expect(regions.onlyAC).toBe(1);
+      // R7: All Three = 0
+      expect(regions.allThree).toBe(0);
+      // R8: Outside = 16 - 13 = 3
+      expect(regions.outside).toBe(3);
 
-      // Conservation invariant: sum of regions = N = 84
+      // Conservation invariant: sum of regions = N = 16
       const sumRegions =
         regions.onlyA +
         regions.onlyB +
@@ -221,7 +221,7 @@ describe('Phase 5 & 6 — Survey Data Ingestion Pipeline & Analytics', () => {
         regions.onlyAC +
         regions.allThree +
         regions.outside;
-      expect(sumRegions).toBe(84);
+      expect(sumRegions).toBe(16);
 
       // Automated PIE invariant check
       const verification = verifyPieInvariants(setData);
@@ -232,13 +232,13 @@ describe('Phase 5 & 6 — Survey Data Ingestion Pipeline & Analytics', () => {
       const csvString = generateSampleCsvContent();
       const parseRes = parseCsvText(csvString);
       expect(parseRes.isValid).toBe(true);
-      expect(parseRes.rows).toHaveLength(84);
+      expect(parseRes.rows).toHaveLength(16);
 
       const mapping = parseRes.suggestedMapping;
       expect(mapping.categories).toBeDefined();
 
       const validation = validateSurveyRows(parseRes.rows, mapping);
-      expect(validation.validRecords).toHaveLength(84);
+      expect(validation.validRecords).toHaveLength(16);
       expect(validation.summary.excludedRows).toHaveLength(0);
 
       const dataset = buildSurveyDataset(
@@ -252,8 +252,8 @@ describe('Phase 5 & 6 — Survey Data Ingestion Pipeline & Analytics', () => {
       );
 
       expect(dataset.sourceType).toBe('uploaded_csv');
-      expect(dataset.totalRespondents).toBe(84);
-      expect(dataset.calculatedSetData.totalRespondents).toBe(84);
+      expect(dataset.totalRespondents).toBe(16);
+      expect(dataset.calculatedSetData.totalRespondents).toBe(16);
       expect(dataset.distributionStats.categoryCounts).toHaveLength(4);
       expect(dataset.insights.length).toBeGreaterThan(0);
     });

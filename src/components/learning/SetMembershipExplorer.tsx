@@ -55,13 +55,13 @@ export const SetMembershipExplorer: React.FC = () => {
     <Card className="p-6 bg-white border-surface-border space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-surface-border/70">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-brand font-semibold flex items-center gap-1.5">
+          <span className="text-xs font-mono uppercase tracking-widest text-brand font-semibold flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" /> Interactive Set Membership Lab
           </span>
-          <h3 className="text-base font-serif font-normal text-content-primary mt-0.5">
+          <h3 className="text-base sm:text-lg font-serif font-normal text-content-primary mt-0.5">
             Respondent Set Membership &amp; Boolean Operations
           </h3>
-          <p className="text-xs text-content-secondary">
+          <p className="text-xs sm:text-sm text-content-secondary">
             Toggle loan categories for individual sample participants to observe real-time set-theoretic operations.
           </p>
         </div>
@@ -77,7 +77,7 @@ export const SetMembershipExplorer: React.FC = () => {
 
       {/* Query Selector Tabs */}
       <div className="space-y-1.5">
-        <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+        <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
           Select Set Operation to Highlight
         </span>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -89,8 +89,8 @@ export const SetMembershipExplorer: React.FC = () => {
                 : 'bg-surface-secondary/40 border-surface-border text-content-secondary hover:bg-surface-secondary'
             }`}
           >
-            <span className="font-mono text-xs block font-bold">A ∪ B</span>
-            <span className="text-[10px] text-content-muted">Union (Personal OR Vehicle)</span>
+            <span className="font-mono text-xs sm:text-sm block font-bold">A ∪ B</span>
+            <span className="text-xs text-content-muted">Union (Personal OR Vehicle)</span>
           </button>
 
           <button
@@ -101,8 +101,8 @@ export const SetMembershipExplorer: React.FC = () => {
                 : 'bg-surface-secondary/40 border-surface-border text-content-secondary hover:bg-surface-secondary'
             }`}
           >
-            <span className="font-mono text-xs block font-bold">A ∩ B</span>
-            <span className="text-[10px] text-content-muted">Intersection (Both A &amp; B)</span>
+            <span className="font-mono text-xs sm:text-sm block font-bold">A ∩ B</span>
+            <span className="text-xs text-content-muted">Intersection (Both A &amp; B)</span>
           </button>
 
           <button
@@ -113,8 +113,8 @@ export const SetMembershipExplorer: React.FC = () => {
                 : 'bg-surface-secondary/40 border-surface-border text-content-secondary hover:bg-surface-secondary'
             }`}
           >
-            <span className="font-mono text-xs block font-bold">A ∩ B ∩ C</span>
-            <span className="text-[10px] text-content-muted">Core Trap (All 3 Loans)</span>
+            <span className="font-mono text-xs sm:text-sm block font-bold">A ∩ B ∩ C</span>
+            <span className="text-xs text-content-muted">Core Trap (All 3 Loans)</span>
           </button>
 
           <button
@@ -125,16 +125,16 @@ export const SetMembershipExplorer: React.FC = () => {
                 : 'bg-surface-secondary/40 border-surface-border text-content-secondary hover:bg-surface-secondary'
             }`}
           >
-            <span className="font-mono text-xs block font-bold">(A ∪ B ∪ C)^c</span>
-            <span className="text-[10px] text-content-muted">Complement (Outside All 3)</span>
+            <span className="font-mono text-xs sm:text-sm block font-bold">(A ∪ B ∪ C)^c</span>
+            <span className="text-xs text-content-muted">Complement (Outside All 3)</span>
           </button>
         </div>
       </div>
 
       {/* Interactive Respondent Table */}
       <div className="border border-surface-border rounded-card overflow-hidden">
-        <table className="w-full text-left text-xs">
-          <thead className="bg-surface-secondary/70 border-b border-surface-border font-mono uppercase tracking-widest text-[9px] text-content-muted">
+        <table className="w-full text-left text-xs sm:text-sm">
+          <thead className="bg-surface-secondary/70 border-b border-surface-border font-mono uppercase tracking-widest text-xs text-content-muted">
             <tr>
               <th className="py-2.5 px-4">Participant</th>
               <th className="py-2.5 px-4 text-center">Set A (Personal)</th>
@@ -143,7 +143,7 @@ export const SetMembershipExplorer: React.FC = () => {
               <th className="py-2.5 px-4 text-right">In Selected Operation?</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-surface-border/60 font-mono text-[11px]">
+          <tbody className="divide-y divide-surface-border/60 font-mono text-xs sm:text-sm">
             {respondents.map((r) => {
               const matches = matchesQuery(r);
               return (
@@ -162,7 +162,7 @@ export const SetMembershipExplorer: React.FC = () => {
                   <td className="py-2.5 px-4 text-center">
                     <button
                       onClick={() => toggleCategory(r.id, 'hasA')}
-                      className={`px-2 py-0.5 rounded-sm border text-[10px] transition-all ${
+                      className={`px-2.5 py-1 rounded-sm border text-xs transition-all ${
                         r.hasA
                           ? 'bg-[#3973B9] text-white border-[#3973B9]'
                           : 'bg-transparent text-content-muted border-surface-border hover:bg-surface-secondary'
@@ -174,7 +174,7 @@ export const SetMembershipExplorer: React.FC = () => {
                   <td className="py-2.5 px-4 text-center">
                     <button
                       onClick={() => toggleCategory(r.id, 'hasB')}
-                      className={`px-2 py-0.5 rounded-sm border text-[10px] transition-all ${
+                      className={`px-2.5 py-1 rounded-sm border text-xs transition-all ${
                         r.hasB
                           ? 'bg-[#C18428] text-white border-[#C18428]'
                           : 'bg-transparent text-content-muted border-surface-border hover:bg-surface-secondary'
@@ -186,7 +186,7 @@ export const SetMembershipExplorer: React.FC = () => {
                   <td className="py-2.5 px-4 text-center">
                     <button
                       onClick={() => toggleCategory(r.id, 'hasC')}
-                      className={`px-2 py-0.5 rounded-sm border text-[10px] transition-all ${
+                      className={`px-2.5 py-1 rounded-sm border text-xs transition-all ${
                         r.hasC
                           ? 'bg-[#8066B2] text-white border-[#8066B2]'
                           : 'bg-transparent text-content-muted border-surface-border hover:bg-surface-secondary'
@@ -197,11 +197,11 @@ export const SetMembershipExplorer: React.FC = () => {
                   </td>
                   <td className="py-2.5 px-4 text-right">
                     {matches ? (
-                      <Badge variant="brand" className="font-mono text-[9px] gap-1">
+                      <Badge variant="brand" className="font-mono text-xs gap-1">
                         <Check className="w-2.5 h-2.5" /> YES
                       </Badge>
                     ) : (
-                      <span className="text-content-muted text-[10px]">NO</span>
+                      <span className="text-content-muted text-xs">NO</span>
                     )}
                   </td>
                 </tr>
@@ -212,9 +212,9 @@ export const SetMembershipExplorer: React.FC = () => {
       </div>
 
       {/* Operation Summary Result */}
-      <div className="p-4 rounded-card bg-surface-secondary/40 border border-surface-border flex items-center justify-between text-xs">
+      <div className="p-4 rounded-card bg-surface-secondary/40 border border-surface-border flex items-center justify-between text-xs sm:text-sm">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+          <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
             Operation Evaluation
           </span>
           <span className="font-serif text-content-primary text-sm font-medium">

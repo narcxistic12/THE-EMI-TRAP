@@ -17,7 +17,7 @@ export function validatePigeonholeInputs(n: number, m: number): { isValid: boole
 /**
  * Calculates the Extended Pigeonhole Principle:
  * Guaranteed minimum in at least one category: ⌊(n - 1) / m⌋ + 1
- * Strictly follows Module 1 Discrete Mathematics specification.
+ * Strictly follows Dirichlet concentration theorem formulation.
  */
 export function calculateExtendedPigeonhole(input: PigeonholeInput): PigeonholeResult {
   const { n, m } = input;
@@ -50,7 +50,8 @@ export function calculateExtendedPigeonhole(input: PigeonholeInput): PigeonholeR
     `Add 1 to determine the guaranteed minimum: ${quotient} + 1 = ${guaranteedMinimum}`,
   ];
 
-  const interpretation = `If ${n} survey respondents are distributed across ${m} mutually exclusive EMI commitment tiers (e.g. 0 EMIs, 1 EMI, 2 EMIs, 3+ EMIs), at least one tier is mathematically guaranteed to contain at least ${guaranteedMinimum} respondents.`;
+  const tierExample = m === 4 ? ' (e.g. 0 EMIs, 1 EMI, 2 EMIs, 3+ EMIs)' : '';
+  const interpretation = `If ${n} survey respondents are distributed across ${m} mutually exclusive EMI commitment tiers${tierExample}, at least one tier is mathematically guaranteed to contain at least ${guaranteedMinimum} respondents.`;
 
   return {
     n,

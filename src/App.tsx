@@ -27,7 +27,7 @@ const PageFallback: React.FC = () => (
   <div className="flex items-center justify-center min-h-[400px]">
     <div className="flex flex-col items-center gap-3">
       <div className="w-6 h-6 border-2 border-brand/20 border-t-brand rounded-full animate-spin" />
-      <span className="font-mono text-[10px] uppercase tracking-widest text-content-muted">
+      <span className="font-mono text-xs uppercase tracking-widest text-content-muted">
         Loading Section...
       </span>
     </div>

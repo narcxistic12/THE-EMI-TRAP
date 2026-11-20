@@ -165,10 +165,10 @@ export const VennDiagramSvg: React.FC<VennDiagramSvgProps> = ({
       {/* Top Controls & Reset Action */}
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-brand font-semibold block">
+          <span className="text-xs font-mono uppercase tracking-widest text-brand font-semibold block">
             Interactive Venn Explorer
           </span>
-          <p className="text-xs text-content-secondary mt-0.5">
+          <p className="text-xs sm:text-sm text-content-secondary mt-0.5">
             Hover or click any partition to inspect its exact mathematical derivation and respondent count.
           </p>
         </div>
@@ -177,7 +177,7 @@ export const VennDiagramSvg: React.FC<VennDiagramSvgProps> = ({
             size="sm"
             variant="ghost"
             onClick={handleReset}
-            className="text-[11px] h-7 gap-1 font-mono text-content-muted hover:text-content-primary"
+            className="text-xs h-7 gap-1 font-mono text-content-muted hover:text-content-primary"
             data-testid="reset-venn-selection"
           >
             <RotateCcw className="w-3 h-3" />
@@ -335,26 +335,26 @@ export const VennDiagramSvg: React.FC<VennDiagramSvgProps> = ({
 
             {/* R8: Outside label */}
             <g className="pointer-events-none" transform="translate(45, 35)">
-              <text className="font-mono text-[10px] uppercase tracking-wider fill-content-muted">
+              <text className="font-mono text-xs uppercase tracking-wider fill-content-muted">
                 Outside: {regionMap.get('outside')?.count}
               </text>
             </g>
 
             {/* Set Identity Labels */}
-            <text x="120" y="55" className="font-mono text-[11px] font-semibold fill-[#3973B9] pointer-events-none">
+            <text x="120" y="55" className="font-mono text-xs font-semibold fill-[#3973B9] pointer-events-none">
               Set A (Personal)
             </text>
-            <text x="310" y="55" className="font-mono text-[11px] font-semibold fill-[#C18428] pointer-events-none">
+            <text x="310" y="55" className="font-mono text-xs font-semibold fill-[#C18428] pointer-events-none">
               Set B (Vehicle)
             </text>
-            <text x="210" y="380" className="font-mono text-[11px] font-semibold fill-[#8066B2] pointer-events-none">
+            <text x="210" y="380" className="font-mono text-xs font-semibold fill-[#8066B2] pointer-events-none">
               Set C (Consumer Durable / BNPL)
             </text>
           </svg>
 
           {/* Mathematical Disclaimer */}
-          <div className="mt-4 p-3 rounded-card bg-surface-secondary/40 border border-surface-border text-center text-[10px] text-content-muted leading-relaxed max-w-md">
-            <Info className="w-3 h-3 text-content-muted inline mr-1 -mt-0.5" />
+          <div className="mt-4 p-3.5 rounded-card bg-surface-secondary/40 border border-surface-border text-center text-xs text-content-muted leading-relaxed max-w-md">
+            <Info className="w-3.5 h-3.5 text-content-muted inline mr-1 -mt-0.5" />
             Venn diagram is a topological illustration of subset partitions. Displayed pixel areas are geometric conventions and not quantitatively proportional to respondent counts.
           </div>
         </div>
@@ -366,18 +366,18 @@ export const VennDiagramSvg: React.FC<VennDiagramSvgProps> = ({
             data-testid="venn-inspector-panel"
           >
             <div className="border-b border-surface-border/70 pb-3 flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted">
+              <span className="text-xs font-mono uppercase tracking-widest text-content-muted">
                 Partition Inspector
               </span>
               {inspectedRegion && (
                 <div className="flex items-center gap-2">
                   {activeSelectedId === inspectedRegion.id && (
-                    <span className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded-sm bg-brand-soft text-brand-dark font-medium">
+                    <span className="text-xs font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-brand-soft text-brand-dark font-medium">
                       Selected
                     </span>
                   )}
                   {hoveredRegionId === inspectedRegion.id && activeSelectedId !== inspectedRegion.id && (
-                    <span className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded-sm bg-surface-secondary text-content-secondary font-medium">
+                    <span className="text-xs font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm bg-surface-secondary text-content-secondary font-medium">
                       Hovering
                     </span>
                   )}
@@ -408,8 +408,8 @@ export const VennDiagramSvg: React.FC<VennDiagramSvgProps> = ({
 
                 {/* Quantitative Metric Badges */}
                 <div className="grid grid-cols-2 gap-3 pt-1">
-                  <div className="p-3 rounded-card bg-surface-secondary/40 border border-surface-border">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+                  <div className="p-3.5 rounded-card bg-surface-secondary/40 border border-surface-border">
+                    <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
                       Respondent Count
                     </span>
                     <span
@@ -418,13 +418,13 @@ export const VennDiagramSvg: React.FC<VennDiagramSvgProps> = ({
                     >
                       {inspectedRegion.count}
                     </span>
-                    <span className="text-[11px] text-content-secondary">
+                    <span className="text-xs text-content-secondary">
                       {inspectedRegion.percentageOfTotal.toFixed(1)}% of cohort (N={data.totalRespondents})
                     </span>
                   </div>
 
-                  <div className="p-3 rounded-card bg-surface-secondary/40 border border-surface-border">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+                  <div className="p-3.5 rounded-card bg-surface-secondary/40 border border-surface-border">
+                    <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
                       Share of Indebted
                     </span>
                     <span
@@ -435,19 +435,19 @@ export const VennDiagramSvg: React.FC<VennDiagramSvgProps> = ({
                         ? `${inspectedRegion.percentageOfUnion.toFixed(1)}%`
                         : 'N/A'}
                     </span>
-                    <span className="text-[11px] text-content-secondary">
+                    <span className="text-xs text-content-secondary">
                       Of |A ∪ B ∪ C| union
                     </span>
                   </div>
                 </div>
 
                 {/* Subtraction Formula */}
-                <div className="p-3 rounded-card bg-surface-secondary/50 border border-surface-border space-y-1">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+                <div className="p-3.5 rounded-card bg-surface-secondary/50 border border-surface-border space-y-1">
+                  <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
                     Exclusive Subtraction Formula
                   </span>
                   <div
-                    className="font-mono text-xs text-content-primary"
+                    className="font-mono text-xs sm:text-sm text-content-primary"
                     data-testid="inspector-formula"
                   >
                     {inspectedRegion.exclusiveFormula}
@@ -455,16 +455,16 @@ export const VennDiagramSvg: React.FC<VennDiagramSvgProps> = ({
                 </div>
 
                 {/* Description */}
-                <p className="text-xs text-content-secondary leading-relaxed font-serif">
+                <p className="text-xs sm:text-sm text-content-secondary leading-relaxed font-serif">
                   {inspectedRegion.description}
                 </p>
               </div>
             ) : (
               <div className="py-12 text-center text-xs text-content-muted space-y-2">
-                <p className="font-serif italic text-sm text-content-secondary">
+                <p className="font-serif italic text-base text-content-secondary">
                   No partition selected
                 </p>
-                <p className="text-[11px] max-w-xs mx-auto">
+                <p className="text-xs max-w-xs mx-auto">
                   Click on any region inside the Venn diagram or choose from the partition breakdown table below to inspect details.
                 </p>
               </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../../lib/utils';
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'secondary' | 'outline' | 'flat';
+  variant?: 'default' | 'secondary' | 'outline' | 'flat' | 'glass';
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -14,11 +14,12 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div
       className={cn(
-        'rounded-card transition-colors duration-150',
-        variant === 'default' && 'bg-surface border border-surface-border shadow-subtle',
-        variant === 'secondary' && 'bg-surface-secondary border border-surface-border/80',
-        variant === 'outline' && 'bg-transparent border border-surface-border',
-        variant === 'flat' && 'bg-surface border-0',
+        'rounded-card transition-all duration-200',
+        variant === 'default' && 'glass-plate',
+        variant === 'glass' && 'glass-plate-interactive',
+        variant === 'secondary' && 'bg-white/40 backdrop-blur-xs border border-surface-border/80',
+        variant === 'outline' && 'bg-transparent border border-surface-border/80',
+        variant === 'flat' && 'bg-white/60 backdrop-blur-xs border-0',
         className
       )}
       {...props}

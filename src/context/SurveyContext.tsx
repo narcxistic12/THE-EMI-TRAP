@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { SurveyDataset, DatasetSourceType } from '../types/survey';
 import { ILLUSTRATIVE_DATASET } from '../data/illustrativeDataset';
-import { SAMPLE_SURVEY_DATASET } from '../data/sampleSurveyDataset';
 import { RESEARCH_SURVEY_DATASET } from '../data/researchSurveyDataset';
 import { SetCardinalityInput } from '../types/setTheory';
 import { ILLUSTRATIVE_SET_DATA } from '../lib/math/setTheory';
@@ -14,7 +13,6 @@ interface SurveyContextType {
   isEmptyState: boolean;
   activeSetData: SetCardinalityInput;
   loadIllustrativeDemo: () => void;
-  loadSampleSurvey: () => void;
   loadResearchSurvey: () => void;
   importUserDataset: (dataset: SurveyDataset) => void;
   removeActiveDataset: () => void;
@@ -43,10 +41,6 @@ export const SurveyProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   const loadIllustrativeDemo = () => {
     setActiveDataset(ILLUSTRATIVE_DATASET);
-  };
-
-  const loadSampleSurvey = () => {
-    setActiveDataset(SAMPLE_SURVEY_DATASET);
   };
 
   const loadResearchSurvey = () => {
@@ -82,7 +76,6 @@ export const SurveyProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         isEmptyState,
         activeSetData,
         loadIllustrativeDemo,
-        loadSampleSurvey,
         loadResearchSurvey,
         importUserDataset,
         removeActiveDataset,

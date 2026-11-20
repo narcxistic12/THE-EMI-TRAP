@@ -68,13 +68,13 @@ export const OverlapDemoWidget: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-surface-border/70">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-brand font-semibold flex items-center gap-1.5">
+          <span className="text-xs font-mono uppercase tracking-widest text-brand font-semibold flex items-center gap-1.5">
             <Sliders className="w-3.5 h-3.5" /> Interactive Overlap Simulator
           </span>
-          <h3 className="text-base font-serif font-normal text-content-primary mt-0.5">
+          <h3 className="text-base sm:text-lg font-serif font-normal text-content-primary mt-0.5">
             Principle of Inclusion–Exclusion Step-by-Step Laboratory
           </h3>
-          <p className="text-xs text-content-secondary">
+          <p className="text-xs sm:text-sm text-content-secondary">
             Adjust individual set sizes and intersection cardinalities to observe how alternating sums eliminate double-counting.
           </p>
         </div>
@@ -82,7 +82,7 @@ export const OverlapDemoWidget: React.FC = () => {
           <div className="flex items-center bg-surface-secondary/70 p-0.5 rounded-btn border border-surface-border">
             <button
               onClick={() => setMode('two-set')}
-              className={`px-2.5 py-1 text-[11px] font-mono rounded-btn transition-all ${
+              className={`px-3 py-1 text-xs font-mono rounded-btn transition-all ${
                 mode === 'two-set'
                   ? 'bg-white text-content-primary font-semibold shadow-xs'
                   : 'text-content-secondary hover:text-content-primary'
@@ -92,7 +92,7 @@ export const OverlapDemoWidget: React.FC = () => {
             </button>
             <button
               onClick={() => setMode('three-set')}
-              className={`px-2.5 py-1 text-[11px] font-mono rounded-btn transition-all ${
+              className={`px-3 py-1 text-xs font-mono rounded-btn transition-all ${
                 mode === 'three-set'
                   ? 'bg-white text-content-primary font-semibold shadow-xs'
                   : 'text-content-secondary hover:text-content-primary'
@@ -122,7 +122,7 @@ export const OverlapDemoWidget: React.FC = () => {
                 onChange={(e) => setSizeA(Number(e.target.value))}
                 className="w-full accent-[#3973B9] cursor-pointer"
               />
-              <span className="text-[10px] text-content-muted block">Primary unsecured loans</span>
+              <span className="text-xs text-content-muted block">Primary unsecured loans</span>
             </div>
 
             <div className="p-3.5 rounded-card bg-surface-secondary/30 border border-surface-border space-y-2">
@@ -138,7 +138,7 @@ export const OverlapDemoWidget: React.FC = () => {
                 onChange={(e) => setSizeB(Number(e.target.value))}
                 className="w-full accent-[#C18428] cursor-pointer"
               />
-              <span className="text-[10px] text-content-muted block">Auto / bike financing</span>
+              <span className="text-xs text-content-muted block">Auto / bike financing</span>
             </div>
 
             <div className="p-3.5 rounded-card bg-surface-secondary/30 border border-surface-border space-y-2">
@@ -154,7 +154,7 @@ export const OverlapDemoWidget: React.FC = () => {
                 onChange={(e) => setIntersectAB(Number(e.target.value))}
                 className="w-full accent-[#176B57] cursor-pointer"
               />
-              <span className="text-[10px] text-content-muted block">
+              <span className="text-xs text-content-muted block">
                 Upper bound: min(|A|, |B|) = {Math.min(sizeA, sizeB)}
               </span>
             </div>
@@ -162,29 +162,29 @@ export const OverlapDemoWidget: React.FC = () => {
 
           {/* Mathematical Step Breakdown */}
           <div className="p-4 rounded-card bg-surface-secondary/50 border border-surface-border space-y-3">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+            <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
               Step-by-Step Derivation
             </span>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs">
               <div className="p-3 rounded-card bg-white border border-surface-border">
-                <span className="text-[10px] text-content-muted block mb-0.5">Step 1: Naive Addition</span>
+                <span className="text-xs text-content-muted block mb-0.5">Step 1: Naive Addition</span>
                 <div className="text-content-primary font-medium">|A| + |B| = {sizeA} + {sizeB}</div>
                 <div className="text-sm font-bold text-content-primary mt-1">{naive2Set} commitments</div>
-                <span className="text-[9px] text-amber-700 block mt-1">Counts overlap twice</span>
+                <span className="text-xs text-amber-700 block mt-1">Counts overlap twice</span>
               </div>
 
               <div className="p-3 rounded-card bg-white border border-surface-border">
-                <span className="text-[10px] text-content-muted block mb-0.5">Step 2: Subtract Overlap</span>
+                <span className="text-xs text-content-muted block mb-0.5">Step 2: Subtract Overlap</span>
                 <div className="text-content-primary font-medium">- |A ∩ B| = -{safeIntersectAB}</div>
                 <div className="text-sm font-bold text-rose-700 mt-1">-{doubleCounted2Set} duplicates</div>
-                <span className="text-[9px] text-content-muted block mt-1">Removes excess counts</span>
+                <span className="text-xs text-content-muted block mt-1">Removes excess counts</span>
               </div>
 
               <div className="p-3 rounded-card bg-brand-soft/40 border border-brand/30">
-                <span className="text-[10px] text-brand-dark block mb-0.5 font-semibold">Step 3: Exact Union</span>
+                <span className="text-xs text-brand-dark block mb-0.5 font-semibold">Step 3: Exact Union</span>
                 <div className="text-brand-dark font-medium">|A ∪ B| = {naive2Set} - {safeIntersectAB}</div>
                 <div className="text-base font-bold text-brand-dark mt-1">{union2Set} unique people</div>
-                <span className="text-[9px] text-brand-dark/80 block mt-1">Mathematically conserved</span>
+                <span className="text-xs text-brand-dark/80 block mt-1">Mathematically conserved</span>
               </div>
             </div>
           </div>
@@ -209,14 +209,14 @@ export const OverlapDemoWidget: React.FC = () => {
         <div className="space-y-6">
           {/* Preset Buttons */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted mr-1">
+            <span className="text-xs font-mono uppercase tracking-widest text-content-muted mr-1">
               Load Preset:
             </span>
             <Button
               size="sm"
               variant="outline"
               onClick={loadBenchmarkPreset}
-              className="text-[11px] font-mono h-6 px-2.5"
+              className="text-xs font-mono h-7 px-3"
             >
               Benchmark (N=100)
             </Button>
@@ -224,7 +224,7 @@ export const OverlapDemoWidget: React.FC = () => {
               size="sm"
               variant="outline"
               onClick={loadSevereOverlapPreset}
-              className="text-[11px] font-mono h-6 px-2.5"
+              className="text-xs font-mono h-7 px-3"
             >
               High Overlap Trap
             </Button>
@@ -232,7 +232,7 @@ export const OverlapDemoWidget: React.FC = () => {
               size="sm"
               variant="outline"
               onClick={loadDisjointPreset}
-              className="text-[11px] font-mono h-6 px-2.5"
+              className="text-xs font-mono h-7 px-3"
             >
               Mutually Disjoint
             </Button>
@@ -242,7 +242,7 @@ export const OverlapDemoWidget: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {/* Single Sets */}
             <div className="p-3.5 rounded-card bg-surface-secondary/30 border border-surface-border space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block font-semibold">
+              <span className="text-xs font-mono uppercase tracking-widest text-content-muted block font-semibold">
                 Single Sets (S₁)
               </span>
               <div className="space-y-1.5 text-xs font-mono">
@@ -284,7 +284,7 @@ export const OverlapDemoWidget: React.FC = () => {
 
             {/* Pairwise Intersections */}
             <div className="p-3.5 rounded-card bg-surface-secondary/30 border border-surface-border space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block font-semibold">
+              <span className="text-xs font-mono uppercase tracking-widest text-content-muted block font-semibold">
                 Pairwise Overlaps (S₂)
               </span>
               <div className="space-y-1.5 text-xs font-mono">
@@ -326,7 +326,7 @@ export const OverlapDemoWidget: React.FC = () => {
 
             {/* Triple Intersection */}
             <div className="p-3.5 rounded-card bg-surface-secondary/30 border border-surface-border space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block font-semibold">
+              <span className="text-xs font-mono uppercase tracking-widest text-content-muted block font-semibold">
                 Triple Intersection (S₃)
               </span>
               <div className="space-y-1.5 text-xs font-mono">
@@ -341,7 +341,7 @@ export const OverlapDemoWidget: React.FC = () => {
                     className="w-16 px-1.5 py-0.5 border border-surface-border rounded text-right bg-white font-bold"
                   />
                 </div>
-                <span className="text-[9px] text-content-muted block pt-2">
+                <span className="text-xs text-content-muted block pt-2">
                   All 3 concurrent loans. Upper bound: min(S₂) = {Math.min(setAB, Math.min(setAC, setBC))}.
                 </span>
               </div>
@@ -350,7 +350,7 @@ export const OverlapDemoWidget: React.FC = () => {
 
           {/* Alternating Expansion Box */}
           <div className="p-4 rounded-card bg-surface-secondary/40 border border-surface-border space-y-3">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+            <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
               Alternating Sum Expansion
             </span>
             <div className="p-3 rounded-card bg-white border border-surface-border font-mono text-xs sm:text-sm text-center">
@@ -365,37 +365,37 @@ export const OverlapDemoWidget: React.FC = () => {
             {/* Step Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs">
               <div className="p-3 rounded-card bg-white border border-blue-200">
-                <span className="text-[9px] text-blue-700 uppercase tracking-widest block font-bold">
+                <span className="text-xs text-blue-700 uppercase tracking-widest block font-bold">
                   Include S₁ (+{s1})
                 </span>
-                <span className="text-content-muted text-[10px] block mt-0.5">
+                <span className="text-content-muted text-xs block mt-0.5">
                   Sum single sets ({setA} + {setB} + {setC})
                 </span>
-                <span className="text-[9px] text-rose-700 block mt-1">
+                <span className="text-xs text-rose-700 block mt-1">
                   Overlaps are counted 2x or 3x.
                 </span>
               </div>
 
               <div className="p-3 rounded-card bg-white border border-rose-200">
-                <span className="text-[9px] text-rose-700 uppercase tracking-widest block font-bold">
+                <span className="text-xs text-rose-700 uppercase tracking-widest block font-bold">
                   Exclude S₂ (-{s2})
                 </span>
-                <span className="text-content-muted text-[10px] block mt-0.5">
+                <span className="text-content-muted text-xs block mt-0.5">
                   Subtract pairs ({setAB} + {setAC} + {setBC})
                 </span>
-                <span className="text-[9px] text-amber-700 block mt-1">
+                <span className="text-xs text-amber-700 block mt-1">
                   Triple overlap subtracted 3 times.
                 </span>
               </div>
 
               <div className="p-3 rounded-card bg-white border border-emerald-200">
-                <span className="text-[9px] text-emerald-700 uppercase tracking-widest block font-bold">
+                <span className="text-xs text-emerald-700 uppercase tracking-widest block font-bold">
                   Re-Include S₃ (+{s3})
                 </span>
-                <span className="text-content-muted text-[10px] block mt-0.5">
+                <span className="text-content-muted text-xs block mt-0.5">
                   Add back triple overlap (+{setABC})
                 </span>
-                <span className="text-[9px] text-emerald-800 block mt-1">
+                <span className="text-xs text-emerald-800 block mt-1">
                   Restores triple intersection exactly once.
                 </span>
               </div>
@@ -406,11 +406,11 @@ export const OverlapDemoWidget: React.FC = () => {
           <div className="p-4 rounded-card bg-white border border-surface-border space-y-2">
             <div className="flex items-center justify-between text-xs font-mono">
               <span className="text-content-secondary">Naive Sum vs Actual Unique Debtors</span>
-              <span className="text-content-muted text-[10px]">
+              <span className="text-content-muted text-xs">
                 Inflation: +{inflation3Set} phantom counts
               </span>
             </div>
-            <div className="h-6 w-full bg-surface-secondary/70 rounded-full overflow-hidden flex font-mono text-[10px] font-bold text-white">
+            <div className="h-6 w-full bg-surface-secondary/70 rounded-full overflow-hidden flex font-mono text-xs font-bold text-white">
               <div
                 style={{ width: `${Math.min(100, (union3Set / Math.max(1, s1)) * 100)}%` }}
                 className="bg-brand flex items-center justify-center transition-all duration-300"

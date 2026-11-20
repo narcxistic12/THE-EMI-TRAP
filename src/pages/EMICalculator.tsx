@@ -48,20 +48,17 @@ export const EMICalculator: React.FC = () => {
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Editorial Header Strip */}
-      <div className="pb-6 border-b border-surface-border/70 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
+      <div className="pb-4 border-b border-surface-border flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-brand block mb-1">
-            Section 02 &bull; Financial Assessment
-          </span>
-          <h1 className="text-2xl sm:text-3xl font-serif font-normal text-content-primary">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-normal text-content-primary">
             Personal Cash Flow &amp; Commitment Planning
           </h1>
-          <p className="text-xs text-content-secondary mt-1 max-w-xl leading-relaxed">
-            Direct financial arithmetic evaluating aggregate monthly outflows against take-home remuneration.
+          <p className="text-sm sm:text-base text-content-secondary mt-1.5">
+            Calculate your combined monthly loan payments against your take-home salary.
           </p>
         </div>
-        <div className="text-[11px] font-mono text-content-muted">
-          Currency: <span className="font-semibold text-content-primary">INR (₹)</span>
+        <div className="text-xs sm:text-sm font-mono text-content-muted">
+          All values in INR (₹)
         </div>
       </div>
 

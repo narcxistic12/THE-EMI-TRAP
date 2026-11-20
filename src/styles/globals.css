@@ -7,12 +7,25 @@
     border-color: #E6E8E3;
   }
 
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  @media (min-width: 1440px) {
+    html {
+      font-size: 16.5px; /* Subtle proportional scale for large desktop viewports */
+    }
+  }
+
   body {
     background-color: #FBFBFA;
     color: #131714;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   /* Numeric tabular figures for luxury financial alignment */
@@ -20,9 +33,104 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Refined headings */
+  /* Refined balanced headings */
   h1, h2, h3, h4 {
     letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  /* Liquid Glass Plate - Core structural container */
+  .glass-plate {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 
+      0 10px 30px -4px rgba(19, 23, 20, 0.04),
+      0 2px 6px -1px rgba(19, 23, 20, 0.02),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  }
+
+  /* Interactive Liquid Glass Plate with tactile elevation */
+  .glass-plate-interactive {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 
+      0 10px 30px -4px rgba(19, 23, 20, 0.04),
+      0 2px 6px -1px rgba(19, 23, 20, 0.02),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .glass-plate-interactive:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.84);
+    border-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 
+      0 16px 36px -4px rgba(19, 23, 20, 0.08),
+      0 4px 10px -2px rgba(19, 23, 20, 0.03),
+      inset 0 1px 0 0 #ffffff;
+  }
+
+  /* Liquid Glass Pill / Capsule */
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 
+      0 2px 8px -1px rgba(19, 23, 20, 0.04),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  }
+
+  /* Floating Liquid Header */
+  .glass-header {
+    background: rgba(251, 251, 250, 0.78);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(230, 232, 227, 0.65);
+    box-shadow: 0 4px 20px -2px rgba(19, 23, 20, 0.03);
+  }
+
+  /* Liquid Sidebar */
+  .glass-sidebar {
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(24px) saturate(190%);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
+    border-right: 1px solid rgba(230, 232, 227, 0.65);
+  }
+
+  /* Elevated Liquid Modal */
+  .glass-modal {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 
+      0 24px 60px -12px rgba(19, 23, 20, 0.12),
+      0 8px 16px -4px rgba(19, 23, 20, 0.04),
+      inset 0 1px 0 0 #ffffff;
+  }
+}
+
+/* Accessibility: Fallback for reduced transparency */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-plate,
+  .glass-plate-interactive,
+  .glass-pill,
+  .glass-header,
+  .glass-sidebar,
+  .glass-modal {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #FFFFFF !important;
   }
 }
 

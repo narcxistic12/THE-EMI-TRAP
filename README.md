@@ -1,31 +1,49 @@
 # THE EMI TRAP
 ### EMI Overlap & Financial Behaviour Analysis Platform
-**Academic Companion for Discrete Mathematics — Module 1: Principle of Inclusion–Exclusion**
+**Analytical Platform for Overlapping Financial Obligations & Debt Stacking**
 
 [![TypeScript Strict](https://img.shields.io/badge/TypeScript-Strict%20Mode-blue.svg)](https://www.typescriptlang.org/)
 [![React 18](https://img.shields.io/badge/React-18-61dafb.svg)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.x-646cff.svg)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS%203-38bdf8.svg)](https://tailwindcss.com/)
-[![Vitest Passing](https://img.shields.io/badge/Tests-93%20Passed-10b981.svg)](https://vitest.dev/)
+[![Vitest Passing](https://img.shields.io/badge/Tests-108%20Passed-10b981.svg)](https://vitest.dev/)
 [![Privacy Compliant](https://img.shields.io/badge/Privacy-100%25%20In--Memory-176b57.svg)](#privacy--application-security)
 
 ---
 
-## 1. Executive Summary & Objective
+## 1. Project Overview & Research Problem
 
-**THE EMI TRAP** is an educational fintech research web application grounded in rigorous **Discrete Mathematics**. The platform bridges theoretical combinatorics with consumer credit economics by demonstrating how commercial credit marketing conceals systemic indebtedness through isolated installment products ("No Cost EMI", consumer durable financing, personal credit lines, and vehicle loans).
+### Research Definition
+- **Project Focus:** THE EMI TRAP — Overlapping Financial Commitments
+- **Problem Statement:** 
+  > *"People may take multiple loans and EMIs without properly calculating their combined monthly financial commitments. This project analyses overlapping financial obligations."*
 
-When financial institutions report debt portfolios in isolation, they commit the **Naive Sum Fallacy**: summing individual category borrower counts ($|A| + |B| + |C|$) severely inflates the perceived unique indebted population while completely obscuring multi-commitment debt overlap. 
+### Key Research Questions (Survey Instrument)
+1. **Do you currently pay any EMI?** — Identifies active borrower status vs debt-free participants.
+2. **How many active EMIs do you have?** — Measures commitment count (0, 1, 2, 3, 4+).
+3. **What types of purchases do you use EMI for?** — Categorizes loans: Personal Loan ($A$), Vehicle Loan ($B$), Consumer Durable / BNPL ($C$), Other.
+4. **Do you calculate your total monthly EMI before taking another loan?** — Evaluates awareness of aggregate cash flow commitments.
+5. **Have you ever struggled to pay multiple EMIs?** — Assesses repayment difficulty and liquidity strain.
+6. **Would you take another EMI if you already had two active loans?** — Measures behavioral willingness to add compounding debt.
 
-By applying the **Principle of Inclusion–Exclusion (PIE)**, our engine:
-1. Decomposes any surveyed cohort into **8 pairwise disjoint, mutually exclusive partitions**.
-2. Formulates exact counts for single-loan borrowers, multi-loan cross-debtors, and debt-free respondents.
-3. Applies **Dirichlet’s Extended Pigeonhole Principle** ($\lfloor (n - 1) / m \rfloor + 1$) to prove guaranteed population concentration thresholds across repayment categories.
-4. Provides a fully interactive financial cash-flow planning tool for individual borrowers to simulate the risk of overlapping commitments.
+### Expected Result
+Calculate overlapping financial commitments and identify how multiple EMIs affect available monthly income using Discrete Mathematics (Principle of Inclusion–Exclusion and Set Partitions).
 
 ---
 
-## 2. Visual Design System
+## 2. Overview & Objective
+
+**THE EMI TRAP** is an analytical web application that investigates how multiple installment loans overlap and affect personal finances. By combining consumer credit survey data with discrete mathematics, the platform shows what happens when borrowers carry personal, vehicle, and retail consumer loans simultaneously.
+
+Counting borrowers in each category separately and simply adding them together ($|A| + |B| + |C|$) counts multi-loan borrowers more than once. The **Principle of Inclusion–Exclusion (PIE)** corrects this by accounting for overlaps across loan categories:
+1. Decomposing any surveyed cohort into **8 pairwise disjoint, mutually exclusive partitions**.
+2. Calculating exact counts for single-loan borrowers, multi-loan cross-debtors, and debt-free respondents.
+3. Applying **Dirichlet’s Extended Pigeonhole Principle** ($\lfloor (n - 1) / m \rfloor + 1$) to establish guaranteed population concentration thresholds across repayment categories.
+4. Providing an interactive financial planning tool for borrowers to simulate the cash flow impact of taking on an additional loan.
+
+---
+
+## 3. Visual Design System
 
 The application adheres to a bespoke **Luxury Wealth Management + Minimal Editorial Finance** visual language:
 - **Typography:**
@@ -43,7 +61,7 @@ The application adheres to a bespoke **Luxury Wealth Management + Minimal Editor
 
 ---
 
-## 3. Platform Architecture & Routes
+## 4. Platform Architecture & Routes
 
 The application features five primary routes with route-level code splitting via `React.lazy()`:
 
@@ -58,7 +76,7 @@ The application features five primary routes with route-level code splitting via
 ### Route Overview
 
 1. **Overview (`/`):**
-   - High-level research summary and motivation.
+   - High-level research summary and academic motivation.
    - Core mathematical pillars: Principle of Inclusion–Exclusion, Overlap Traps, and Dirichlet Bounds.
    - Live platform metric counters.
 
@@ -73,8 +91,8 @@ The application features five primary routes with route-level code splitting via
    - **Interactive 3-Set Venn Diagram:** Custom SVG rendering with 8 native circular arc paths (`VENN_PATHS`) and hit-tested centroids. Features full hover highlighting, click-lock selection persistence, and synchronization with the Partition Inspector.
    - **Survey Ingestion Pipeline:** Allows uploading real Google Forms CSV responses.
    - **Global Dataset Controller:** Seamlessly toggle between:
-     - *Illustrative Benchmark Cohort* ($N=100$): $|A|=40, |B|=35, |C|=30, |AB|=15, |AC|=12, |BC|=10, |ABC|=5$.
-     - *Empirical Survey Dataset* ($N=84$): Clean real-world responses parsed with automated deduplication.
+     - *Empirical Research Survey Cohort* ($N=16$): Genuine field responses from `THE_EMI_TRAP_RESEARCH_DATA_N16.csv` with exact set breakdown ($|A|=4, |B|=6, |C|=7$).
+     - *Illustrative Benchmark Cohort* ($N=100$): Theoretical benchmark model ($|A|=40, |B|=35, |C|=30, |AB|=15, |AC|=12, |BC|=10, |ABC|=5$).
      - *Custom Uploaded Dataset:* Processed 100% in-browser.
    - **Six Visual Analytics Panels (Recharts):**
      1. Overlap vs Disjoint Borrowers (Donut).
@@ -97,12 +115,11 @@ The application features five primary routes with route-level code splitting via
      8. Extended Pigeonhole Principle with dynamic interactive $(n, m)$ controller.
 
 5. **Learning Lab (`/learning-lab`):**
-   - Complete 5-module discrete mathematics academic syllabus:
+   - Complete 4-module discrete mathematics academic syllabus:
      - **Module 01: Fundamentals of Set Theory** (Universal sets, subsets, operations, disjoint partitions).
      - **Module 02: Principle of Inclusion–Exclusion** (Alternating sums, double-counting elimination).
      - **Module 03: Generalized Inclusion–Exclusion** (Partitions for exactly $m$ and at least $m$ conditions).
      - **Module 04: Extended Pigeonhole Principle** (Dirichlet guarantee, $\lfloor (n-1)/m \rfloor + 1$ proof).
-     - **Module 05: Supplementary Combinatorics** (Sum/Product rules, combinations with repetition, derangements, rook polynomials).
    - **Interactive Learning Components:**
      - `SetMembershipExplorer.tsx`: Live participant toggle table evaluating $A \cup B, A \cap B, A \cap B \cap C$, and complement.
      - `OverlapDemoWidget.tsx`: 2-Set and 3-Set interactive PIE simulator showing alternating steps and inflation metrics.
@@ -187,15 +204,17 @@ npm run dev
 
 ### Automated Test Suite (Vitest)
 ```bash
-npm test -- --run
+npm test
 ```
-**Test Results: 6 Test Suites • 93 Tests Passing (0 Failures)**
-- `src/tests/calculatorEdgeCases.test.ts` (7 tests)
+**Test Results: 8 Test Suites • 108 Tests Passing (0 Failures)**
+- `src/tests/calculatorEdgeCases.test.ts` (10 tests)
 - `src/tests/emiCalculations.test.ts` (9 tests)
+- `src/tests/researchDataset.test.ts` (6 tests)
 - `src/tests/inclusionExclusion.test.ts` (28 tests)
 - `src/tests/surveyPipeline.test.ts` (19 tests)
 - `src/tests/vennDiagram.test.tsx` (14 tests)
 - `src/tests/learningLab.test.tsx` (16 tests)
+- `src/tests/pagesIntegration.test.tsx` (6 tests)
 
 ### Production Build & Code-Splitting Audit
 ```bash
@@ -203,15 +222,20 @@ npm run build
 ```
 Build output (all chunks $< 500\text{ kB}$, zero bundle warnings):
 ```
-dist/index.html                                 1.52 kB │ gzip:   0.74 kB
-dist/assets/index-Cg7m7c51.css                 35.48 kB │ gzip:   6.78 kB
-dist/assets/Overview-BETFsqmS.js               11.54 kB │ gzip:   3.07 kB
-dist/assets/MathematicalAnalysis-AMAUci_A.js   16.48 kB │ gzip:   4.85 kB
-dist/assets/vendor-icons-BCoGHIHs.js           18.42 kB │ gzip:   4.20 kB
-dist/assets/EMICalculator-B2OMFLLf.js          26.50 kB │ gzip:   6.13 kB
-dist/assets/ResearchDashboard-BhIsVTM_.js      58.81 kB │ gzip:  13.74 kB
-dist/assets/index-Dx_6cnpz.js                  68.22 kB │ gzip:  20.53 kB
-dist/assets/LearningLab-M0MGJWBB.js            72.77 kB │ gzip:  17.60 kB
+dist/index.html                                 1.54 kB │ gzip:   0.75 kB
+dist/assets/index-CWa-XpdW.css                 35.47 kB │ gzip:   6.78 kB
+dist/assets/KatexMath-DUYCaRVT.js               0.48 kB │ gzip:   0.35 kB
+dist/assets/Badge-Cp5dotWh.js                   0.84 kB │ gzip:   0.42 kB
+dist/assets/Card-D5VYWIQS.js                    0.98 kB │ gzip:   0.40 kB
+dist/assets/NotFound-BrAFHGYP.js                1.03 kB │ gzip:   0.55 kB
+dist/assets/Overview-Cs6cDqIe.js               16.25 kB │ gzip:   4.21 kB
+dist/assets/MathematicalAnalysis-DhSwa3xR.js   17.92 kB │ gzip:   5.29 kB
+dist/assets/vendor-icons-LyMThxiF.js           19.25 kB │ gzip:   4.31 kB
+dist/assets/EMICalculator-CYhGfunC.js          26.59 kB │ gzip:   6.16 kB
+dist/assets/CsvUploadModal-CHxnlRBp.js         27.72 kB │ gzip:   7.88 kB
+dist/assets/ResearchDashboard-BJKg7Blo.js      32.38 kB │ gzip:   7.08 kB
+dist/assets/LearningLab-C-MAnT6Y.js            65.86 kB │ gzip:  15.31 kB
+dist/assets/index-2XLKUfiD.js                  72.55 kB │ gzip:  21.21 kB
 dist/assets/vendor-react-55UPXt-Y.js          164.75 kB │ gzip:  53.89 kB
 dist/assets/vendor-katex-Dc8nsIP1.js          261.07 kB │ gzip:  77.50 kB
 dist/assets/vendor-charts-C2DIgTZn.js         415.98 kB │ gzip: 112.53 kB
@@ -219,7 +243,7 @@ dist/assets/vendor-charts-C2DIgTZn.js         415.98 kB │ gzip: 112.53 kB
 
 ---
 
-## 7. Project Invariant Compliance
+## 8. Project Invariant Compliance
 
 - `design.md` length: **33,769 bytes** (Strictly preserved, never modified).
 - Mathematical calculations: 100% verified against classical discrete mathematics theorems.

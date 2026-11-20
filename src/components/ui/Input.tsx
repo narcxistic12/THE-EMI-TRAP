@@ -18,7 +18,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-[10px] font-semibold uppercase tracking-widest text-content-muted"
+            className="block text-xs font-semibold uppercase tracking-widest text-content-muted"
           >
             {label}
           </label>
@@ -33,7 +33,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             ref={ref}
             className={cn(
-              'w-full h-9 rounded-input border border-surface-border bg-white px-3 py-2 text-xs text-content-primary placeholder:text-content-muted/80 transition-colors duration-150',
+              'w-full h-10 rounded-input border border-surface-border bg-white px-3 py-2 text-sm text-content-primary placeholder:text-content-muted/80 transition-colors duration-150',
               'focus:outline-none focus:border-content-primary/40 focus:ring-1 focus:ring-content-primary/20',
               'disabled:bg-surface-secondary disabled:cursor-not-allowed disabled:text-content-muted',
               prefixElement && 'pl-8',
@@ -50,9 +50,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           )}
         </div>
         {error ? (
-          <p className="text-[11px] text-semantic-danger font-medium mt-1">{error}</p>
+          <p className="text-xs text-semantic-danger font-medium mt-1">{error}</p>
         ) : helperText ? (
-          <p className="text-[11px] text-content-muted mt-1 leading-relaxed">{helperText}</p>
+          <p className="text-xs text-content-muted mt-1 leading-relaxed">{helperText}</p>
         ) : null}
       </div>
     );

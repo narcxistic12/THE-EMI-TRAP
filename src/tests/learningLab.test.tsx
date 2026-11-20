@@ -9,14 +9,13 @@ import { ModuleKnowledgeCheck } from '../components/learning/ModuleKnowledgeChec
 
 describe('Learning Lab — Discrete Mathematics Curriculum & Interactive Engines', () => {
   describe('Curriculum Data Integrity', () => {
-    it('contains all 5 comprehensive curriculum modules', () => {
-      expect(LEARNING_MODULES.length).toBe(5);
+    it('contains all 4 comprehensive curriculum modules', () => {
+      expect(LEARNING_MODULES.length).toBe(4);
       const moduleIds = LEARNING_MODULES.map((m) => m.id);
       expect(moduleIds).toContain('module-1-foundations');
       expect(moduleIds).toContain('module-2-pie');
       expect(moduleIds).toContain('module-3-generalized');
       expect(moduleIds).toContain('module-4-pigeonhole');
-      expect(moduleIds).toContain('module-5-supplementary');
     });
 
     it('defines non-empty topics with rigorous LaTeX formulas and practical EMI applications', () => {
@@ -34,8 +33,7 @@ describe('Learning Lab — Discrete Mathematics Curriculum & Interactive Engines
           expect(topic.emiApplication.length).toBeGreaterThan(10);
         }
       }
-      // Must cover at least 16 topics across the 5 modules
-      expect(totalTopics).toBeGreaterThanOrEqual(16);
+      expect(totalTopics).toBe(12);
     });
 
     it('verifies that each module contains verified assessment questions with valid answer bounds', () => {
@@ -53,7 +51,7 @@ describe('Learning Lab — Discrete Mathematics Curriculum & Interactive Engines
           expect(q.explanation.length).toBeGreaterThan(15);
         }
       }
-      expect(totalQuestions).toBeGreaterThanOrEqual(15);
+      expect(totalQuestions).toBe(12);
     });
   });
 
@@ -68,9 +66,9 @@ describe('Learning Lab — Discrete Mathematics Curriculum & Interactive Engines
       expect(extendedPigeonhole(100, 4)).toBe(25);
     });
 
-    it('calculates the empirical survey threshold for n=84 and m=4', () => {
-      // floor((84 - 1) / 4) + 1 = floor(83 / 4) + 1 = 20 + 1 = 21
-      expect(extendedPigeonhole(84, 4)).toBe(21);
+    it('calculates the empirical survey threshold for n=16 and m=4', () => {
+      // floor((16 - 1) / 4) + 1 = floor(15 / 4) + 1 = 3 + 1 = 4
+      expect(extendedPigeonhole(16, 4)).toBe(4);
     });
 
     it('handles identical object and bin counts (n = m)', () => {
@@ -131,7 +129,7 @@ describe('Learning Lab — Discrete Mathematics Curriculum & Interactive Engines
   describe('Component Server Rendering', () => {
     it('renders the LearningLab page without errors', () => {
       const html = renderToString(<LearningLab />);
-      expect(html).toContain('Discrete Mathematics Learning Lab');
+      expect(html).toContain('Debt Analytics &amp; Set Theory Lab');
       expect(html).toContain('Fundamentals of Set Theory');
       expect(html).toContain('Section 05');
     });
@@ -166,7 +164,7 @@ describe('Learning Lab — Discrete Mathematics Curriculum & Interactive Engines
       const html = renderToString(
         <ModuleKnowledgeCheck questions={questions} moduleTitle="Fundamentals of Set Theory" />
       );
-      expect(html).toContain('Module Knowledge Verification');
+      expect(html).toContain('Concept Knowledge Verification');
       expect(html).toContain('Fundamentals of Set Theory');
       expect(html).toContain('Score:');
       expect(html).toContain('Question');

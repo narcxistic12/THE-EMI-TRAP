@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../ui/Card';
+import { Card, CardHeader, CardTitle, CardContent } from '../ui/Card';
 import { formatINR, parseCleanNumber } from '../../lib/utils';
 import { validateIncome } from '../../lib/emiCalculations';
 
@@ -52,30 +52,30 @@ export const IncomeInput: React.FC<IncomeInputProps> = ({ income, onIncomeChange
 
   return (
     <Card className="border-surface-border">
-      <CardHeader className="pb-3">
+      <CardHeader className="pb-2.5">
         <div className="flex items-center justify-between">
-          <div>
-            <CardTitle className="font-serif text-base sm:text-lg">Monthly Net Income</CardTitle>
-            <CardDescription>
-              Net take-home remuneration received each month after statutory deductions and tax.
-            </CardDescription>
-          </div>
-          <span className="hidden sm:inline-flex px-2.5 py-0.5 rounded-sm bg-surface-secondary border border-surface-border text-content-primary text-xs font-mono">
+          <CardTitle className="font-serif text-lg sm:text-xl">Monthly Take-Home Income</CardTitle>
+          <span className="px-3 py-1 rounded-sm glass-pill text-content-primary text-xs sm:text-sm font-mono font-medium">
             {formatINR(income)}
           </span>
         </div>
       </CardHeader>
-      <CardContent className="space-y-5 pt-4">
+      <CardContent className="space-y-4 pt-2">
         {/* Large Input Display */}
         <div>
-          <label
-            htmlFor="monthly-income-input"
-            className="block text-[10px] font-semibold uppercase tracking-widest text-content-muted mb-1.5"
-          >
-            Monthly Inflow (INR ₹)
-          </label>
-          <div className="relative flex items-center">
-            <span className="absolute left-3.5 text-content-muted font-serif text-lg pointer-events-none">
+          <div className="flex items-center justify-between mb-2">
+            <label
+              htmlFor="monthly-income-input"
+              className="block text-xs sm:text-sm font-semibold uppercase tracking-wider text-content-muted"
+            >
+              Net Inflow (₹)
+            </label>
+            <span className="text-xs sm:text-sm font-mono text-content-muted">
+              Slide or type amount
+            </span>
+          </div>
+          <div className="relative flex items-center mb-3">
+            <span className="absolute left-3.5 text-content-muted font-serif text-xl pointer-events-none">
               ₹
             </span>
             <input
@@ -85,33 +85,55 @@ export const IncomeInput: React.FC<IncomeInputProps> = ({ income, onIncomeChange
               value={displayValue}
               onChange={handleChange}
               placeholder="e.g. 50,000"
-              className="w-full h-11 pl-9 pr-4 rounded-input border border-surface-border bg-white text-lg font-mono font-normal text-content-primary placeholder:text-content-muted/60 focus:outline-none focus:border-content-primary/40 focus:ring-1 focus:ring-content-primary/20 transition-colors"
+              className="w-full h-12 pl-10 pr-4 rounded-input border border-surface-border/80 bg-white/60 backdrop-blur-xs text-xl sm:text-2xl font-mono font-normal text-content-primary placeholder:text-content-muted/60 focus:outline-none focus:border-brand/60 focus:bg-white/90 focus:ring-1 focus:ring-brand/20 transition-all shadow-xs"
             />
           </div>
-          {error && <p className="text-[11px] text-semantic-danger font-medium mt-1.5">{error}</p>}
+
+          {/* Interactive Range Slider */}
+          <div className="space-y-1.5">
+            <input
+              type="range"
+              min="10000"
+              max="150000"
+              step="1000"
+              value={income || 10000}
+              onChange={(e) => {
+                const val = parseInt(e.target.value, 10);
+                setDisplayValue(val.toString());
+                setError(undefined);
+                onIncomeChange(val);
+              }}
+              className="w-full accent-brand cursor-pointer h-2 bg-surface-secondary rounded-lg"
+              aria-label="Monthly income slider"
+            />
+            <div className="flex justify-between text-xs sm:text-sm font-mono text-content-muted">
+              <span>₹10,000</span>
+              <span>₹1,50,000</span>
+            </div>
+          </div>
+
+          {error && <p className="text-xs sm:text-sm text-semantic-danger font-medium mt-1.5">{error}</p>}
         </div>
 
         {/* Quick Presets */}
-        <div>
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-content-muted block mb-2">
-            Reference Benchmarks:
+        <div className="flex flex-wrap items-center gap-2 pt-1">
+          <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-content-muted mr-1">
+            Presets:
           </span>
-          <div className="flex flex-wrap gap-1.5">
-            {PRESET_INCOMES.map((preset) => (
-              <button
-                key={preset}
-                type="button"
-                onClick={() => handlePresetClick(preset)}
-                className={`px-3 py-1 rounded-btn text-xs font-mono transition-all ${
-                  income === preset
-                    ? 'bg-content-primary text-white font-medium shadow-xs'
-                    : 'bg-surface-secondary text-content-secondary hover:bg-surface-border/70 border border-surface-border/70'
-                }`}
-              >
-                {formatINR(preset)}
-              </button>
-            ))}
-          </div>
+          {PRESET_INCOMES.map((preset) => (
+            <button
+              key={preset}
+              type="button"
+              onClick={() => handlePresetClick(preset)}
+              className={`px-3 py-1.5 rounded-btn text-xs sm:text-sm font-mono transition-all ${
+                income === preset
+                  ? 'bg-content-primary text-white font-medium shadow-xs'
+                  : 'bg-surface-secondary text-content-secondary hover:bg-surface-border/70 border border-surface-border/70'
+              }`}
+            >
+              {formatINR(preset)}
+            </button>
+          ))}
         </div>
       </CardContent>
     </Card>

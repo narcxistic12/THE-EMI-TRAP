@@ -225,32 +225,26 @@ export const MathematicalAnalysis: React.FC = () => {
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Editorial Header */}
-      <div className="pb-6 border-b border-surface-border/70 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
+      <div className="pb-4 border-b border-surface-border flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-brand block mb-1">
-            Section 04 &bull; Formal Proofs
-          </span>
-          <h1 className="text-2xl sm:text-3xl font-serif font-normal text-content-primary">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-normal text-content-primary">
             Mathematical Analysis &amp; Derivations
           </h1>
-          <p className="text-xs text-content-secondary mt-1 max-w-xl leading-relaxed">
-            Standardized 8-step solutions applying Discrete Mathematics Module 1 (Principle of Inclusion and Exclusion).
+          <p className="text-sm sm:text-base text-content-secondary mt-1.5">
+            Applying the Principle of Inclusion and Exclusion to resolve multi-loan borrower overlaps.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto">
           {isIllustrativeDemo && (
-            <Badge variant="setB" className="font-mono text-[10px]">
+            <Badge variant="setB" className="font-mono text-xs px-2.5 py-1">
               Benchmark Model (N={data.totalRespondents})
             </Badge>
           )}
           {isActualSurvey && (
-            <Badge variant="setA" className="font-mono text-[10px]">
+            <Badge variant="setA" className="font-mono text-xs px-2.5 py-1">
               Active Cohort: {activeDataset?.name} (N={data.totalRespondents})
             </Badge>
           )}
-          <span className="text-[11px] font-mono text-content-muted">
-            Module 1 &bull; Discrete Mathematics
-          </span>
         </div>
       </div>
 
@@ -286,28 +280,28 @@ export const MathematicalAnalysis: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Calculation Index */}
         <div className="lg:col-span-4 space-y-2">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-content-muted px-1 mb-2">
-            Formulation Index (08)
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-content-muted px-1 mb-2.5">
+            Calculations (8)
           </p>
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             {calculations.map((calc) => {
               const isSelected = calc.id === selectedCalcId;
               return (
                 <button
                   key={calc.id}
                   onClick={() => setSelectedCalcId(calc.id)}
-                  className={`w-full text-left p-3 rounded-card border transition-all ${
+                  className={`w-full text-left p-3.5 rounded-card border transition-all ${
                     isSelected
                       ? 'bg-surface text-content-primary border-surface-border shadow-xs'
                       : 'bg-transparent hover:bg-surface-secondary/60 border-transparent text-content-secondary'
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium truncate flex items-center gap-2">
-                      <span className="font-mono text-[10px] text-content-muted">{calc.number}</span>
+                    <span className="text-xs sm:text-sm font-medium truncate flex items-center gap-2.5">
+                      <span className="font-mono text-xs text-content-muted">{calc.number}</span>
                       <span className={isSelected ? 'text-content-primary font-semibold' : ''}>{calc.title}</span>
                     </span>
-                    {isSelected && <Check className="w-3.5 h-3.5 text-brand shrink-0" />}
+                    {isSelected && <Check className="w-4 h-4 text-brand shrink-0" />}
                   </div>
                 </button>
               );
@@ -315,37 +309,37 @@ export const MathematicalAnalysis: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Standard 8-Step Solution Panel */}
+        {/* Right Column: Standard Solution Panel */}
         <div className="lg:col-span-8">
-          <Card className="p-8 space-y-6 bg-white border-surface-border shadow-subtle">
-            {/* Step 1 & 2: Title & Concept */}
-            <div className="border-b border-surface-border/70 pb-4">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-brand block mb-1">
-                Step 01 &amp; 02 &bull; Problem Definition &amp; Theorem
-              </span>
-              <h2 className="text-xl sm:text-2xl font-serif font-normal text-content-primary">
-                {selectedCalc.title}
-              </h2>
-              <p className="text-xs text-content-secondary mt-1">
-                <span className="font-semibold text-content-primary">Concept:</span> {selectedCalc.concept}
-              </p>
+          <Card variant="default" className="p-6 sm:p-8 space-y-6">
+            {/* Header: Title & Formal Theorem */}
+            <div className="border-b border-surface-border/70 pb-5 space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1.5">
+                <h2 className="text-2xl sm:text-3xl font-serif font-normal text-content-primary">
+                  {selectedCalc.title}
+                </h2>
+                <span className="text-xs sm:text-sm font-mono text-content-muted">
+                  {selectedCalc.concept}
+                </span>
+              </div>
+              <div className="p-4 rounded-card bg-white/40 backdrop-blur-xs border border-white/60 text-center overflow-x-auto shadow-xs">
+                <KatexMath math={selectedCalc.latexFormula} block />
+              </div>
             </div>
 
             {/* Interactive Pigeonhole Controls (if calculation 08) */}
             {selectedCalc.isInteractive && (
-              <div className="p-4 rounded-card bg-surface-secondary/50 border border-surface-border space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-brand font-semibold flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3" /> Interactive Parameter Controls
+              <div className="p-4 sm:p-5 rounded-card bg-white/40 backdrop-blur-xs border border-white/60 space-y-3.5 shadow-xs">
+                <div className="flex items-center justify-between text-xs sm:text-sm">
+                  <span className="font-semibold text-content-primary flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-brand" /> Interactive Controls
                   </span>
-                  <span className="text-[11px] font-mono text-content-muted">
-                    Formula: ⌊(n - 1) / m⌋ + 1
-                  </span>
+                  <span className="font-mono text-content-muted">Formula: ⌊(n - 1) / m⌋ + 1</span>
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-3.5">
                   <div>
-                    <label htmlFor="pigeonhole-n-input" className="block text-[10px] font-mono uppercase text-content-muted mb-1">
-                      Objects n (Respondents)
+                    <label htmlFor="pigeonhole-n-input" className="block text-xs font-mono uppercase text-content-muted mb-1.5 font-semibold">
+                      Respondents (n)
                     </label>
                     <input
                       id="pigeonhole-n-input"
@@ -353,12 +347,12 @@ export const MathematicalAnalysis: React.FC = () => {
                       min="1"
                       value={pigeonholeN}
                       onChange={(e) => handlePigeonholeChange(parseInt(e.target.value, 10) || 1, pigeonholeM)}
-                      className="w-full h-8 px-2.5 rounded-input border border-surface-border bg-white text-xs font-mono"
+                      className="w-full h-10 px-3 rounded-input border border-surface-border/80 bg-white/60 backdrop-blur-xs text-sm font-mono"
                     />
                   </div>
                   <div>
-                    <label htmlFor="pigeonhole-m-input" className="block text-[10px] font-mono uppercase text-content-muted mb-1">
-                      Categories m (Tiers)
+                    <label htmlFor="pigeonhole-m-input" className="block text-xs font-mono uppercase text-content-muted mb-1.5 font-semibold">
+                      Tiers (m)
                     </label>
                     <input
                       id="pigeonhole-m-input"
@@ -366,101 +360,92 @@ export const MathematicalAnalysis: React.FC = () => {
                       min="1"
                       value={pigeonholeM}
                       onChange={(e) => handlePigeonholeChange(pigeonholeN, parseInt(e.target.value, 10) || 1)}
-                      className="w-full h-8 px-2.5 rounded-input border border-surface-border bg-white text-xs font-mono"
+                      className="w-full h-10 px-3 rounded-input border border-surface-border/80 bg-white/60 backdrop-blur-xs text-sm font-mono"
                     />
                   </div>
                 </div>
+
+                {/* Visual Dirichlet Pigeonhole Bins */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+                  {Array.from({ length: Math.min(4, pigeonholeM) }).map((_, bIdx) => (
+                    <div
+                      key={bIdx}
+                      className="p-3 rounded-card bg-white/60 backdrop-blur-xs border border-white/80 text-center space-y-1 shadow-xs"
+                    >
+                      <span className="text-xs font-mono uppercase text-content-muted block font-semibold">
+                        Tier {bIdx + 1}
+                      </span>
+                      <div className="text-lg sm:text-xl font-serif font-medium text-brand">
+                        &ge; {pigeonholeResult.guaranteedMinimum}
+                      </div>
+                      <span className="text-xs font-mono text-content-muted block">
+                        Guaranteed
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
                 {pigeonholeError && (
-                  <p className="text-[11px] text-semantic-danger font-medium">{pigeonholeError}</p>
+                  <p className="text-xs sm:text-sm text-semantic-danger font-medium">{pigeonholeError}</p>
                 )}
               </div>
             )}
 
-            {/* Step 3: Given Values */}
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
-                Step 03 &bull; Given Cardinalities from Dataset
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {/* Given Values & Substitution */}
+            <div className="space-y-3.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                 {Object.entries(selectedCalc.given).map(([key, val]) => (
                   <div
                     key={key}
-                    className="p-3 rounded-card bg-surface-secondary/40 border border-surface-border text-xs"
+                    className="p-3 rounded-card bg-surface-secondary/30 border border-surface-border/60 text-xs sm:text-sm"
                   >
-                    <span className="text-content-muted block text-[10px] uppercase font-mono">
+                    <span className="text-content-muted block text-xs font-mono">
                       {key}
                     </span>
-                    <span className="font-mono text-sm font-semibold text-content-primary mt-1 block">
+                    <span className="font-mono text-xs sm:text-sm font-medium text-content-primary mt-0.5 block">
                       {val}
                     </span>
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Step 4: Mathematical Formula (Rendered with KaTeX) */}
-            <div className="space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
-                Step 04 &bull; Formal Theoretical Expression
-              </span>
-              <div className="p-4 rounded-card bg-surface-secondary/60 border border-surface-border font-mono text-sm sm:text-base font-medium text-content-primary flex items-center justify-center min-h-[50px]">
-                <KatexMath math={selectedCalc.latexFormula} block />
-              </div>
-            </div>
-
-            {/* Step 5: Substitution (Rendered with KaTeX) */}
-            <div className="space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
-                Step 05 &bull; Parameter Substitution
-              </span>
-              <div className="p-3.5 rounded-card bg-brand-soft/30 border border-brand/20 font-mono text-xs sm:text-sm text-brand-dark flex items-center justify-center min-h-[44px]">
+              <div className="p-3.5 rounded-card bg-brand-soft/20 border border-brand/20 text-center overflow-x-auto">
                 <KatexMath math={selectedCalc.substitution} block />
               </div>
             </div>
 
-            {/* Step 6: Step-by-Step Solution */}
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
-                Step 06 &bull; Step-by-Step Expansion
-              </span>
-              <ol className="space-y-2 pl-1">
+            {/* Step-by-Step Expansion */}
+            <div className="space-y-2 pt-1">
+              <h3 className="text-xs sm:text-sm font-mono uppercase tracking-wider text-content-muted font-semibold">
+                Step-by-Step Expansion
+              </h3>
+              <div className="space-y-2 pl-1">
                 {selectedCalc.stepByStep.map((step, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-xs text-content-secondary">
-                    <span className="w-5 h-5 rounded-sm bg-surface-secondary border border-surface-border text-content-muted font-mono text-[10px] flex items-center justify-center shrink-0 mt-0.5">
-                      {idx + 1}
+                  <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-content-secondary">
+                    <span className="font-mono text-xs text-content-muted shrink-0 mt-0.5 font-semibold">
+                      {idx + 1}.
                     </span>
-                    <span className="font-mono pt-0.5">{step}</span>
-                  </li>
+                    <span className="font-mono leading-relaxed">{step}</span>
+                  </div>
                 ))}
-              </ol>
-            </div>
-
-            {/* Step 7: Final Result */}
-            <div className="p-5 rounded-card bg-surface-secondary border border-surface-border flex items-center justify-between">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-brand block">
-                  Step 07 &bull; Evaluated Invariant Result
-                </span>
-                <p className="text-xs text-content-secondary mt-0.5 font-serif italic">
-                  Calculated invariant
-                </p>
-              </div>
-              <div className="text-right">
-                <span className="text-3xl sm:text-4xl font-serif font-normal text-content-primary">
-                  {selectedCalc.finalResult}
-                </span>
-                <span className="text-[11px] font-mono text-content-muted block">
-                  {selectedCalc.unit}
-                </span>
               </div>
             </div>
 
-            {/* Step 8: Plain-English Interpretation */}
-            <div className="space-y-1.5 pt-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
-                Step 08 &bull; Plain-English Interpretation
-              </span>
-              <p className="text-xs sm:text-sm text-content-secondary leading-relaxed bg-surface-secondary/30 p-4 rounded-card border border-surface-border font-serif">
+            {/* Result & Interpretation Banner */}
+            <div className="pt-2 border-t border-surface-border/70 space-y-3.5">
+              <div className="flex items-baseline justify-between">
+                <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-content-muted font-semibold">
+                  Calculated Result
+                </span>
+                <div className="text-right">
+                  <span className="text-3xl sm:text-4xl lg:text-5xl font-serif text-brand">
+                    {selectedCalc.finalResult}
+                  </span>
+                  <span className="text-xs sm:text-sm font-mono text-content-muted ml-2 font-medium">
+                    {selectedCalc.unit}
+                  </span>
+                </div>
+              </div>
+              <p className="text-sm sm:text-base text-content-secondary leading-relaxed bg-surface-secondary/20 p-4 rounded-card border border-surface-border/60">
                 {selectedCalc.interpretation}
               </p>
             </div>

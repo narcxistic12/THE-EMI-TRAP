@@ -4,7 +4,7 @@ import { parseCsvText } from '../../lib/survey/csvParser';
 import { CANONICAL_COLUMNS } from '../../lib/survey/columnMapper';
 import { validateSurveyRows } from '../../lib/survey/surveyValidator';
 import { buildSurveyDataset } from '../../lib/survey/surveyAggregator';
-import { generateSampleCsvContent } from '../../data/sampleSurveyDataset';
+import { generateSampleCsvContent } from '../../data/researchSurveyDataset';
 import {
   CanonicalSurveyField,
   ColumnMapping,
@@ -216,9 +216,9 @@ export const CsvUploadModal: React.FC = () => {
               {/* Sample Dataset Helper */}
               <div className="pt-4 border-t border-surface-border/70 flex items-center justify-between">
                 <div>
-                  <h4 className="text-xs font-semibold text-content-primary">No CSV file handy?</h4>
-                  <p className="text-[11px] text-content-muted">
-                    Test the ingestion pipeline using a sample Google Forms export file (84 respondents).
+                  <h4 className="text-xs sm:text-sm font-semibold text-content-primary">No CSV file handy?</h4>
+                  <p className="text-xs text-content-muted">
+                    Test the ingestion pipeline using the genuine Google Forms survey responses (16 respondents).
                   </p>
                 </div>
                 <Button size="sm" variant="outline" onClick={handleLoadSampleCsv} className="text-xs font-mono">
@@ -233,22 +233,22 @@ export const CsvUploadModal: React.FC = () => {
             <div className="space-y-6">
               <div className="flex items-center justify-between pb-2 border-b border-surface-border/60">
                 <div>
-                  <span className="text-xs font-semibold text-content-primary">
+                  <span className="text-xs sm:text-sm font-semibold text-content-primary">
                     File: {fileMeta.name} ({parseResult.totalRows} rows detected)
                   </span>
-                  <p className="text-[11px] text-content-muted">
+                  <p className="text-xs text-content-muted">
                     Review and confirm how each survey question maps to project analysis fields.
                   </p>
                 </div>
-                <Badge variant="setA" className="font-mono text-[10px]">
+                <Badge variant="setA" className="font-mono text-xs">
                   {parseResult.headers.length} Columns
                 </Badge>
               </div>
 
               {/* Mapping Table */}
               <div className="border border-surface-border rounded-card overflow-hidden">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-surface-secondary/70 border-b border-surface-border font-mono uppercase tracking-widest text-[9px] text-content-muted">
+                <table className="w-full text-left text-xs sm:text-sm">
+                  <thead className="bg-surface-secondary/70 border-b border-surface-border font-mono uppercase tracking-widest text-xs text-content-muted">
                     <tr>
                       <th className="py-2.5 px-4">Research Metric</th>
                       <th className="py-2.5 px-4">Requirement</th>
@@ -262,7 +262,7 @@ export const CsvUploadModal: React.FC = () => {
                         <tr key={col.key} className="hover:bg-surface-secondary/20">
                           <td className="py-2.5 px-4">
                             <span className="font-medium text-content-primary block">{col.label}</span>
-                            <span className="text-[10px] text-content-muted font-mono">{col.description}</span>
+                            <span className="text-xs text-content-muted font-mono">{col.description}</span>
                           </td>
                           <td className="py-2.5 px-4 font-mono">
                             {col.required ? (
@@ -276,7 +276,7 @@ export const CsvUploadModal: React.FC = () => {
                               <select
                                 value={currentMapped}
                                 onChange={(e) => handleMappingChange(col.key, e.target.value)}
-                                className="w-full h-8 px-2.5 pr-8 rounded-input border border-surface-border bg-white text-xs font-mono text-content-primary appearance-none cursor-pointer focus:outline-none focus:border-brand"
+                                className="w-full h-9 px-2.5 pr-8 rounded-input border border-surface-border bg-white text-xs font-mono text-content-primary appearance-none cursor-pointer focus:outline-none focus:border-brand"
                               >
                                 <option value="__none__">-- Not Mapped --</option>
                                 {parseResult.headers.map((h) => (
@@ -311,7 +311,7 @@ export const CsvUploadModal: React.FC = () => {
             <div className="space-y-6">
               {/* Dataset Name Input */}
               <div>
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-content-muted mb-1">
+                <label className="block text-xs font-mono uppercase tracking-widest text-content-muted mb-1">
                   Survey Dataset Name
                 </label>
                 <input
@@ -325,27 +325,27 @@ export const CsvUploadModal: React.FC = () => {
 
               {/* Validation Summary Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="p-3 rounded-card bg-surface-secondary/40 border border-surface-border">
-                  <span className="text-[10px] font-mono uppercase text-content-muted block">Total Uploaded</span>
-                  <span className="text-xl font-mono text-content-primary font-normal mt-1 block">
+                <div className="p-3.5 rounded-card bg-surface-secondary/40 border border-surface-border">
+                  <span className="text-xs font-mono uppercase text-content-muted block">Total Uploaded</span>
+                  <span className="text-xl sm:text-2xl font-mono text-content-primary font-normal mt-1 block">
                     {validation.summary.totalRows}
                   </span>
                 </div>
-                <div className="p-3 rounded-card bg-brand-soft/40 border border-brand/20">
-                  <span className="text-[10px] font-mono uppercase text-brand block font-semibold">Valid Responses</span>
-                  <span className="text-xl font-mono text-brand-dark font-normal mt-1 block">
+                <div className="p-3.5 rounded-card bg-brand-soft/40 border border-brand/20">
+                  <span className="text-xs font-mono uppercase text-brand block font-semibold">Valid Responses</span>
+                  <span className="text-xl sm:text-2xl font-mono text-brand-dark font-normal mt-1 block">
                     {validation.summary.validRowCount}
                   </span>
                 </div>
-                <div className="p-3 rounded-card bg-surface-secondary/40 border border-surface-border">
-                  <span className="text-[10px] font-mono uppercase text-content-muted block">Duplicate Exclusions</span>
-                  <span className="text-xl font-mono text-content-primary font-normal mt-1 block">
+                <div className="p-3.5 rounded-card bg-surface-secondary/40 border border-surface-border">
+                  <span className="text-xs font-mono uppercase text-content-muted block">Duplicate Exclusions</span>
+                  <span className="text-xl sm:text-2xl font-mono text-content-primary font-normal mt-1 block">
                     {validation.summary.duplicateRowCount}
                   </span>
                 </div>
-                <div className="p-3 rounded-card bg-surface-secondary/40 border border-surface-border">
-                  <span className="text-[10px] font-mono uppercase text-content-muted block">Invalid Exclusions</span>
-                  <span className="text-xl font-mono text-content-primary font-normal mt-1 block">
+                <div className="p-3.5 rounded-card bg-surface-secondary/40 border border-surface-border">
+                  <span className="text-xs font-mono uppercase text-content-muted block">Invalid Exclusions</span>
+                  <span className="text-xl sm:text-2xl font-mono text-content-primary font-normal mt-1 block">
                     {validation.summary.invalidRowCount}
                   </span>
                 </div>
@@ -357,7 +357,7 @@ export const CsvUploadModal: React.FC = () => {
                   <div className="font-semibold flex items-center gap-1.5">
                     <AlertTriangle className="w-4 h-4" /> {validation.summary.excludedRows.length} Rows Excluded from Mathematical Processing:
                   </div>
-                  <ul className="space-y-1 list-disc pl-5 max-h-28 overflow-y-auto font-mono text-[11px]">
+                  <ul className="space-y-1 list-disc pl-5 max-h-28 overflow-y-auto font-mono text-xs">
                     {validation.summary.excludedRows.map((ex, i) => (
                       <li key={i}>
                         Row {ex.rowNumber} ({ex.identifier}): {ex.reason}
@@ -369,21 +369,21 @@ export const CsvUploadModal: React.FC = () => {
 
               {/* Sample Valid Records Preview */}
               <div className="space-y-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+                <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
                   First 5 Valid Records Preview
                 </span>
                 <div className="border border-surface-border rounded-card overflow-hidden">
-                  <table className="w-full text-left text-xs">
-                    <thead className="bg-surface-secondary/70 border-b border-surface-border font-mono uppercase tracking-widest text-[9px] text-content-muted">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead className="bg-surface-secondary/70 border-b border-surface-border font-mono uppercase tracking-widest text-xs text-content-muted">
                       <tr>
-                        <th className="py-2 px-3">ID</th>
-                        <th className="py-2 px-3">Active Categories</th>
-                        <th className="py-2 px-3">Income</th>
-                        <th className="py-2 px-3">EMI Commitment</th>
-                        <th className="py-2 px-3">Difficulty</th>
+                        <th className="py-2.5 px-3">ID</th>
+                        <th className="py-2.5 px-3">Active Categories</th>
+                        <th className="py-2.5 px-3">Income</th>
+                        <th className="py-2.5 px-3">EMI Commitment</th>
+                        <th className="py-2.5 px-3">Difficulty</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-surface-border/60 font-mono text-[11px]">
+                    <tbody className="divide-y divide-surface-border/60 font-mono text-xs sm:text-sm">
                       {validation.validRecords.slice(0, 5).map((r) => (
                         <tr key={r.id} className="hover:bg-surface-secondary/20">
                           <td className="py-2 px-3 text-content-muted">{r.id}</td>

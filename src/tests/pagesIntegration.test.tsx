@@ -9,7 +9,6 @@ import { MathematicalAnalysis } from '../pages/MathematicalAnalysis';
 import { LearningLab } from '../pages/LearningLab';
 import { RESEARCH_SURVEY_DATASET } from '../data/researchSurveyDataset';
 import { ILLUSTRATIVE_DATASET } from '../data/illustrativeDataset';
-import { SAMPLE_SURVEY_DATASET } from '../data/sampleSurveyDataset';
 import { calculateThreeSetPIE } from '../lib/math/inclusionExclusion';
 import { calculateDisjointRegions } from '../lib/math/vennRegions';
 
@@ -114,11 +113,11 @@ describe('Comprehensive Page Integration & Runtime Render Checks', () => {
       </MemoryRouter>
     );
 
-    expect(html).toContain('Discrete Mathematics Learning Lab');
+    expect(html).toContain('Debt Analytics &amp; Set Theory Lab');
     expect(html).toContain('Fundamentals of Set Theory');
   });
 
-  it('verifies dataset switching between N=16, N=100 and N=84 preserves mathematical integrity', () => {
+  it('verifies dataset switching between N=16 and N=100 preserves mathematical integrity', () => {
     // 1. Research Cohort (N=16)
     const pie16 = calculateThreeSetPIE(RESEARCH_SURVEY_DATASET.calculatedSetData);
     expect(RESEARCH_SURVEY_DATASET.totalRespondents).toBe(16);
@@ -130,11 +129,5 @@ describe('Comprehensive Page Integration & Runtime Render Checks', () => {
     expect(ILLUSTRATIVE_DATASET.totalRespondents).toBe(100);
     expect(pie100.atLeastOne).toBe(73);
     expect(pie100.outside).toBe(27);
-
-    // 3. Field Sample (N=84)
-    const pie84 = calculateThreeSetPIE(SAMPLE_SURVEY_DATASET.calculatedSetData);
-    expect(SAMPLE_SURVEY_DATASET.totalRespondents).toBe(84);
-    expect(pie84.atLeastOne).toBe(64);
-    expect(pie84.outside).toBe(20);
   });
 });

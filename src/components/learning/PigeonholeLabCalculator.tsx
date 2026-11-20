@@ -28,13 +28,13 @@ export const PigeonholeLabCalculator: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-surface-border/70">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-brand font-semibold flex items-center gap-1.5">
+          <span className="text-xs font-mono uppercase tracking-widest text-brand font-semibold flex items-center gap-1.5">
             <Box className="w-3.5 h-3.5" /> Dirichlet Principle Laboratory
           </span>
-          <h3 className="text-base font-serif font-normal text-content-primary mt-0.5">
+          <h3 className="text-base sm:text-lg font-serif font-normal text-content-primary mt-0.5">
             Extended Pigeonhole Principle Explorer
           </h3>
-          <p className="text-xs text-content-secondary">
+          <p className="text-xs sm:text-sm text-content-secondary">
             Compute guaranteed worst-case concentration bounds for any number of elements distributed across discrete categories.
           </p>
         </div>
@@ -50,7 +50,7 @@ export const PigeonholeLabCalculator: React.FC = () => {
 
       {/* Preset Selector */}
       <div className="space-y-1.5">
-        <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+        <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
           Preset Scenarios
         </span>
         <div className="flex flex-wrap gap-2">
@@ -65,10 +65,10 @@ export const PigeonholeLabCalculator: React.FC = () => {
           <Button
             size="sm"
             variant="outline"
-            onClick={() => loadPreset(84, 4)}
-            className={`text-xs font-mono h-7 ${validN === 84 && validM === 4 ? 'border-brand text-brand-dark bg-brand-soft/20' : ''}`}
+            onClick={() => loadPreset(16, 4)}
+            className={`text-xs font-mono h-7 ${validN === 16 && validM === 4 ? 'border-brand text-brand-dark bg-brand-soft/20' : ''}`}
           >
-            Empirical Survey (n=84, m=4)
+            Research Survey (n=16, m=4)
           </Button>
           <Button
             size="sm"
@@ -103,7 +103,7 @@ export const PigeonholeLabCalculator: React.FC = () => {
             onChange={(e) => setObjectsN(Math.max(1, parseInt(e.target.value) || 1))}
             className="w-full px-3 py-2 border border-surface-border rounded-btn bg-white font-mono text-sm text-content-primary focus:outline-none focus:border-brand"
           />
-          <span className="text-[10px] text-content-muted block">
+          <span className="text-xs text-content-muted block">
             Total individuals or items to partition
           </span>
         </div>
@@ -120,7 +120,7 @@ export const PigeonholeLabCalculator: React.FC = () => {
             onChange={(e) => setBoxesM(Math.max(1, parseInt(e.target.value) || 1))}
             className="w-full px-3 py-2 border border-surface-border rounded-btn bg-white font-mono text-sm text-content-primary focus:outline-none focus:border-brand"
           />
-          <span className="text-[10px] text-content-muted block">
+          <span className="text-xs text-content-muted block">
             Discrete buckets (e.g. 0, 1, 2, 3+ loans)
           </span>
         </div>
@@ -129,7 +129,7 @@ export const PigeonholeLabCalculator: React.FC = () => {
       {/* Step-by-Step Derivation */}
       <div className="p-5 rounded-card bg-surface-secondary/60 border border-surface-border space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block font-semibold">
+          <span className="text-xs font-mono uppercase tracking-widest text-content-muted block font-semibold">
             Mathematical Evaluation
           </span>
           <span className="text-xs font-mono text-brand font-semibold">
@@ -173,7 +173,7 @@ export const PigeonholeLabCalculator: React.FC = () => {
       {/* Adversarial Worst-Case Distribution Visualizer */}
       {validM <= 10 && (
         <div className="space-y-3">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted block">
+          <span className="text-xs font-mono uppercase tracking-widest text-content-muted block">
             Adversary Distribution Proof (Attempting to minimize the maximum bucket)
           </span>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-2 font-mono text-xs">
@@ -191,18 +191,18 @@ export const PigeonholeLabCalculator: React.FC = () => {
                       : 'bg-white border-surface-border text-content-secondary'
                   }`}
                 >
-                  <span className="text-[9px] uppercase tracking-wider block text-content-muted mb-1">
+                  <span className="text-xs uppercase tracking-wider block text-content-muted mb-1">
                     Category {idx + 1}
                   </span>
                   <span className="text-base font-bold block">{bucketCount}</span>
-                  <span className="text-[9px] block text-content-muted mt-0.5">
+                  <span className="text-xs block text-content-muted mt-0.5">
                     {isMax ? 'Threshold met' : 'Base items'}
                   </span>
                 </div>
               );
             })}
           </div>
-          <p className="text-[11px] text-content-muted font-serif italic">
+          <p className="text-xs sm:text-sm text-content-muted font-serif italic">
             Even under perfectly uniform dispersion, filling each of the {validM} categories with at most {quotient} items accounts for only {validM * quotient} items, leaving {validN - validM * quotient} element(s) that must force at least one category to reach {resultK}.
           </p>
         </div>

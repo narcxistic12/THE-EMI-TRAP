@@ -28,7 +28,7 @@ const CustomTooltip: React.FC<any> = ({ active, payload, label }) => {
           Count: <span className="text-content-primary font-bold">{data.value}</span>
         </p>
         {data.payload.percentage !== undefined && (
-          <p className="font-mono text-[11px] text-content-muted">
+          <p className="font-mono text-xs text-content-muted">
             Share: {Number(data.payload.percentage).toFixed(1)}%
           </p>
         )}
@@ -81,13 +81,13 @@ export const ResearchCharts: React.FC<ResearchChartsProps> = ({ stats, totalResp
         {/* Chart 1: EMI Category Distribution */}
         <Card className="p-6 bg-white border-surface-border space-y-4">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-brand block">
+            <span className="text-xs font-mono uppercase tracking-widest text-brand block">
               Chart 01 &bull; Category Cardinalities
             </span>
             <h3 className="text-base font-serif font-normal text-content-primary">
               EMI Category Distribution
             </h3>
-            <p className="text-xs text-content-secondary mt-0.5">
+            <p className="text-xs sm:text-sm text-content-secondary mt-0.5">
               Unique individuals servicing loans in each broad borrowing classification.
             </p>
           </div>
@@ -128,13 +128,13 @@ export const ResearchCharts: React.FC<ResearchChartsProps> = ({ stats, totalResp
         {/* Chart 2: Number of Active EMIs */}
         <Card className="p-6 bg-white border-surface-border space-y-4">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-brand block">
+            <span className="text-xs font-mono uppercase tracking-widest text-brand block">
               Chart 02 &bull; Commitment Multiplicity
             </span>
             <h3 className="text-base font-serif font-normal text-content-primary">
               Active Loan Agreements per Person
             </h3>
-            <p className="text-xs text-content-secondary mt-0.5">
+            <p className="text-xs sm:text-sm text-content-secondary mt-0.5">
               Distribution of respondents across total concurrent EMI contracts.
             </p>
           </div>
@@ -161,13 +161,13 @@ export const ResearchCharts: React.FC<ResearchChartsProps> = ({ stats, totalResp
         {/* Chart 3: Monthly Take-Home Income Distribution */}
         <Card className="p-6 bg-white border-surface-border space-y-4">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-brand block">
+            <span className="text-xs font-mono uppercase tracking-widest text-brand block">
               Chart 03 &bull; Cohort Earning Profile
             </span>
             <h3 className="text-base font-serif font-normal text-content-primary">
               Monthly Income Distribution
             </h3>
-            <p className="text-xs text-content-secondary mt-0.5">
+            <p className="text-xs sm:text-sm text-content-secondary mt-0.5">
               Reported take-home income brackets among surveyed participants.
             </p>
           </div>
@@ -198,13 +198,13 @@ export const ResearchCharts: React.FC<ResearchChartsProps> = ({ stats, totalResp
         {/* Chart 4: Monthly Total EMI Ranges */}
         <Card className="p-6 bg-white border-surface-border space-y-4">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-brand block">
+            <span className="text-xs font-mono uppercase tracking-widest text-brand block">
               Chart 04 &bull; Combined Outflow
             </span>
             <h3 className="text-base font-serif font-normal text-content-primary">
               Monthly Total EMI Commitments
             </h3>
-            <p className="text-xs text-content-secondary mt-0.5">
+            <p className="text-xs sm:text-sm text-content-secondary mt-0.5">
               Aggregate monthly debt outflow reported by respondents.
             </p>
           </div>
@@ -235,13 +235,13 @@ export const ResearchCharts: React.FC<ResearchChartsProps> = ({ stats, totalResp
         {/* Chart 5: Repayment Difficulty */}
         <Card className="p-6 bg-white border-surface-border space-y-4">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-brand block">
+            <span className="text-xs font-mono uppercase tracking-widest text-brand block">
               Chart 05 &bull; Repayment Sentiment
             </span>
             <h3 className="text-base font-serif font-normal text-content-primary">
               Experienced Repayment Strain
             </h3>
-            <p className="text-xs text-content-secondary mt-0.5">
+            <p className="text-xs sm:text-sm text-content-secondary mt-0.5">
               Frequency of reported difficulty meeting multiple monthly installments.
             </p>
           </div>
@@ -282,7 +282,7 @@ export const ResearchCharts: React.FC<ResearchChartsProps> = ({ stats, totalResp
         {/* Chart 6: Savings After EMI */}
         <Card className="p-6 bg-white border-surface-border space-y-4">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-brand block">
+            <span className="text-xs font-mono uppercase tracking-widest text-brand block">
               Chart 06 &bull; Cash Flow Resilience
             </span>
             <h3 className="text-base font-serif font-normal text-content-primary">

@@ -59,18 +59,18 @@ export const ModuleKnowledgeCheck: React.FC<ModuleKnowledgeCheckProps> = ({
       {/* Quiz Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-surface-border/70">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-brand font-semibold flex items-center gap-1.5">
-            <Award className="w-3.5 h-3.5" /> Module Knowledge Verification
+          <span className="text-xs font-mono uppercase tracking-widest text-brand font-semibold flex items-center gap-1.5">
+            <Award className="w-3.5 h-3.5" /> Concept Knowledge Verification
           </span>
-          <h3 className="text-base font-serif font-normal text-content-primary mt-0.5">
+          <h3 className="text-base sm:text-lg font-serif font-normal text-content-primary mt-0.5">
             {moduleTitle} &bull; Practice Assessment
           </h3>
-          <p className="text-xs text-content-secondary">
-            Test your understanding of the discrete mathematics concepts and their practical EMI overlap interpretations.
+          <p className="text-xs sm:text-sm text-content-secondary">
+            Test your understanding of the analytical concepts and their practical EMI overlap interpretations.
           </p>
         </div>
         <div className="flex items-center gap-2 self-start sm:self-auto font-mono text-xs">
-          <Badge variant="setB" className="text-[10px]">
+          <Badge variant="setB" className="text-xs">
             Score: {correctCount} / {questions.length}
           </Badge>
           <Button
@@ -140,10 +140,10 @@ export const ModuleKnowledgeCheck: React.FC<ModuleKnowledgeCheckProps> = ({
                 className={`w-full text-left p-3.5 rounded-card border transition-all text-xs flex items-start justify-between gap-3 ${buttonStyle}`}
               >
                 <div className="flex items-start gap-2.5">
-                  <span className="font-mono text-[10px] font-semibold text-content-muted uppercase mt-0.5 shrink-0">
+                  <span className="font-mono text-xs font-semibold text-content-muted uppercase mt-0.5 shrink-0">
                     {String.fromCharCode(65 + optIdx)}.
                   </span>
-                  <span className="leading-relaxed font-sans">{option}</span>
+                  <span className="leading-relaxed font-sans text-xs sm:text-sm">{option}</span>
                 </div>
                 {hasAnswered && isThisCorrect && (
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
@@ -160,13 +160,13 @@ export const ModuleKnowledgeCheck: React.FC<ModuleKnowledgeCheckProps> = ({
       {/* Explanation Box */}
       {hasAnswered && (
         <div
-          className={`p-4 rounded-card border space-y-2 text-xs animate-in fade-in duration-200 ${
+          className={`p-4 rounded-card border space-y-2 text-xs sm:text-sm animate-in fade-in duration-200 ${
             isCorrect
               ? 'bg-emerald-50/60 border-emerald-200 text-emerald-950'
               : 'bg-rose-50/60 border-rose-200 text-rose-950'
           }`}
         >
-          <div className="flex items-center gap-2 font-mono font-semibold text-[11px]">
+          <div className="flex items-center gap-2 font-mono font-semibold text-xs sm:text-sm">
             {isCorrect ? (
               <>
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
@@ -185,10 +185,10 @@ export const ModuleKnowledgeCheck: React.FC<ModuleKnowledgeCheckProps> = ({
 
           {currentQ.whyOthersIncorrect && currentQ.whyOthersIncorrect.length > 0 && (
             <div className="pt-2 border-t border-surface-border/40 space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-content-muted block">
+              <span className="text-xs font-mono uppercase tracking-wider text-content-muted block">
                 Analysis of Alternative Distractors:
               </span>
-              <ul className="list-disc pl-4 space-y-1 text-[11px] text-content-secondary font-sans">
+              <ul className="list-disc pl-4 space-y-1 text-xs text-content-secondary font-sans">
                 {currentQ.whyOthersIncorrect.map((distractor, dIdx) => (
                   <li key={dIdx}>{distractor}</li>
                 ))}

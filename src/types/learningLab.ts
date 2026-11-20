@@ -2,8 +2,7 @@ export type LearningModuleId =
   | 'module-1-foundations'
   | 'module-2-pie'
   | 'module-3-generalized'
-  | 'module-4-pigeonhole'
-  | 'module-5-supplementary';
+  | 'module-4-pigeonhole';
 
 export interface QuizQuestion {
   id: string;

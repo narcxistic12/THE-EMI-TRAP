@@ -456,20 +456,20 @@ export const LEARNING_MODULES: LearningModule[] = [
       },
       {
         id: 'q4-2',
-        question: 'In an empirical survey of n = 84 participants distributed into m = 4 borrowing frequency tiers (0, 1, 2, 3+ EMIs), what is the Dirichlet guaranteed threshold?',
+        question: 'In our empirical research survey of n = 16 participants distributed into m = 4 borrowing frequency tiers (0, 1, 2, 3+ EMIs), what is the Dirichlet guaranteed threshold?',
         options: [
-          '21 respondents',
-          '20 respondents',
-          '22 respondents',
-          '84 respondents',
+          '4 respondents',
+          '3 respondents',
+          '5 respondents',
+          '16 respondents',
         ],
         correctIndex: 0,
         explanation:
-          'Evaluate ⌊(84 - 1) / 4⌋ + 1 = ⌊83 / 4⌋ + 1 = ⌊20.75⌋ + 1 = 20 + 1 = 21 respondents.',
+          'Evaluate ⌊(16 - 1) / 4⌋ + 1 = ⌊15 / 4⌋ + 1 = ⌊3.75⌋ + 1 = 3 + 1 = 4 respondents.',
         whyOthersIncorrect: [
-          '20 is the unincremented integer division result ⌊83 / 4⌋.',
-          '22 overshoots the integer floor evaluation.',
-          '84 is the entire sample size.',
+          '3 is the unincremented integer division result ⌊15 / 4⌋.',
+          '5 overshoots the integer floor evaluation.',
+          '16 is the entire sample size.',
         ],
       },
       {
@@ -488,161 +488,6 @@ export const LEARNING_MODULES: LearningModule[] = [
           'A non-empty set of objects cannot guarantee a bound of zero.',
           'Bound 2 requires n > m (at least m + 1 objects).',
           'Since m ≥ 1, division by zero never occurs.',
-        ],
-      },
-    ],
-  },
-
-  // ─────────────────────────────────────────────────────────────
-  // MODULE 5: ADDITIONAL MODULE 1 CONCEPTS (SUPPLEMENTARY)
-  // ─────────────────────────────────────────────────────────────
-  {
-    id: 'module-5-supplementary',
-    number: '05',
-    title: 'Additional Module 1 Concepts',
-    tagline: 'Supplementary educational demonstrations in combinatorial theory',
-    category: 'supplementary',
-    description:
-      'These supplementary concepts expand on the Discrete Mathematics Module 1 syllabus (counting rules, arrangements with repetition, derangements, and rook polynomials). They are provided purely for academic enrichment and are not direct calculations in the personal EMI calculator.',
-    topics: [
-      {
-        id: 'sum-and-product-rules',
-        title: 'Sum & Product Rules',
-        subtitle: 'Fundamental disjunctive and sequential counting rules',
-        latexFormula: '|A \\cup B| = |A| + |B| \\quad (\\text{if } A \\cap B = \\emptyset), \\qquad |A \\times B| = |A| \\cdot |B|',
-        definition:
-          'The Sum Rule states that if task A can be done in m ways and task B in n ways with no overlap, doing A or B has m + n ways. The Product Rule states that doing task A followed by task B has m × n ways.',
-        workedExample:
-          'If a borrower chooses 1 of 3 banks (Sum Rule: 3 choices) and selects 1 of 4 repayment terms (Product Rule: 3 × 4 = 12 loan configurations).',
-        emiApplication:
-          'Educational precursor to understanding when dependencies exist between financial choices versus independent permutations.',
-        stepByStep: [
-          'Sum Rule: Disjoint choices add together.',
-          'Product Rule: Sequential independent choices multiply together.',
-        ],
-      },
-      {
-        id: 'permutations-and-combinations',
-        title: 'Permutations & Combinations',
-        subtitle: 'Ordered sequences versus unordered groupings',
-        latexFormula: 'P(n, r) = \\frac{n!}{(n - r)!}, \\qquad \\binom{n}{r} = \\frac{n!}{r!(n - r)!}',
-        definition:
-          'Permutations count ordered arrangements where sequence matters. Combinations count unordered selections where order is disregarded.',
-        workedExample:
-          'Selecting 2 loan categories from 4 available: C(4, 2) = 4! / (2! 2!) = (24) / (4) = 6 possible pairwise loan combinations.',
-        emiApplication:
-          'Combinations provide the binomial coefficients (k choose m) used in Generalized Inclusion–Exclusion expansions.',
-        stepByStep: [
-          'Identify total categories n = 4 and choice size r = 2.',
-          'Calculate factorials: 4! = 24, 2! = 2.',
-          'Divide: 24 / (2 × 2) = 6 pairwise combinations.',
-        ],
-      },
-      {
-        id: 'combinations-with-repetition',
-        title: 'Combinations with Repetition',
-        subtitle: 'Stars and bars distribution of identical units',
-        latexFormula: '\\binom{n + r - 1}{r} = \\binom{n + r - 1}{n - 1}',
-        definition:
-          'The number of ways to choose r elements from n categories with replacement, equivalent to distributing r identical items into n distinct bins.',
-        workedExample:
-          'Distributing r = 5 loan payments across n = 3 bank accounts: C(3 + 5 - 1, 5) = C(7, 5) = 21 ways.',
-        emiApplication:
-          'Illustrates cash allocation models across competing financial commitments.',
-        stepByStep: [
-          'Formulate stars and bars: r stars and n - 1 dividers.',
-          'Evaluate binomial coefficient C(n + r - 1, r).',
-        ],
-      },
-      {
-        id: 'derangements-subfactorials',
-        title: 'Derangements (Subfactorials)',
-        subtitle: 'Permutations where no element remains in its original position',
-        latexFormula: '!n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!} = n! \\left( 1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\dots + \\frac{(-1)^n}{n!} \\right)',
-        definition:
-          'A derangement is a permutation of n elements where no element appears in its original position, rigorously derived via Inclusion–Exclusion.',
-        workedExample:
-          '!3 = 3!(1 - 1 + 1/2 - 1/6) = 6(2/6) = 2. For n=4, !4 = 9.',
-        emiApplication:
-          'Classic pedagogical demonstration of alternating signs in PIE series expansions during course viva evaluations.',
-        stepByStep: [
-          'Define total permutations n!.',
-          'Exclude permutations with at least one fixed point using PIE.',
-          'Derive subfactorial series !n.',
-        ],
-      },
-      {
-        id: 'rook-polynomials-forbidden',
-        title: 'Rook Polynomials & Forbidden Positions',
-        subtitle: 'Placing non-attacking rooks on restricted boards',
-        latexFormula: 'R(x, B) = \\sum_{k=0}^n r_k x^k, \\qquad N(\\text{valid}) = \\sum_{k=0}^n (-1)^k r_k (n - k)!',
-        definition:
-          'Rook polynomials generate the number of ways to place k non-attacking rooks on a restricted board. Combined with PIE, they solve matching problems with forbidden assignments.',
-        workedExample:
-          'On a 2×2 board with 1 forbidden square, R(x, B) = 1 + x. Valid assignments = 2! - 1(1!) = 2 - 1 = 1.',
-        emiApplication:
-          'Academic demonstration of generating functions combined with PIE for constrained matching problems.',
-        stepByStep: [
-          'Find rook coefficients r_k from board geometry.',
-          'Apply alternating PIE sum with (n - k)! permutations.',
-          'Compute final valid arrangements.',
-        ],
-      },
-    ],
-    quiz: [
-      {
-        id: 'q5-1',
-        question: 'Which discrete mathematics principle is used to derive the derangement formula !n = n! Σ (-1)^k / k! ?',
-        options: [
-          'Principle of Inclusion–Exclusion',
-          'Pigeonhole Principle',
-          'Binomial Theorem',
-          'Euclidean Algorithm',
-        ],
-        correctIndex: 0,
-        explanation:
-          'The derangement formula is a celebrated direct application of the Principle of Inclusion–Exclusion, where the conditions C_i represent element i appearing in its original fixed position.',
-        whyOthersIncorrect: [
-          'The Pigeonhole Principle proves existence; it does not derive alternating permutation sums.',
-          'The Binomial Theorem expands (x + y)^n.',
-          'The Euclidean Algorithm computes greatest common divisors.',
-        ],
-      },
-      {
-        id: 'q5-2',
-        question: 'How many distinct combinations of choosing 2 loan categories from 4 available options exist?',
-        latexEquation: '\\binom{4}{2} = \\frac{4!}{2!(4 - 2)!}',
-        options: [
-          '6 combinations',
-          '12 combinations',
-          '8 combinations',
-          '24 combinations',
-        ],
-        correctIndex: 0,
-        explanation:
-          'Evaluate the combination formula: 4! / (2! × 2!) = 24 / 4 = 6 combinations. The 6 pairs are {A,B}, {A,C}, {A,D}, {B,C}, {B,D}, {C,D}.',
-        whyOthersIncorrect: [
-          '12 is the number of permutations P(4, 2) where order matters.',
-          '8 is 4 × 2.',
-          '24 is 4! permutations of all 4 items.',
-        ],
-      },
-      {
-        id: 'q5-3',
-        question: 'For a set of 3 distinct items {1, 2, 3}, how many complete derangements (!3) exist where no element appears in its original position?',
-        options: [
-          '2 derangements: (2, 3, 1) and (3, 1, 2)',
-          '6 derangements (all permutations)',
-          '1 derangement: (3, 2, 1)',
-          '0 derangements',
-        ],
-        correctIndex: 0,
-        explanation:
-          '!3 = 3!(1 - 1 + 1/2 - 1/6) = 6(2/6) = 2. Out of 6 total permutations, exactly two leave no element fixed: (2, 3, 1) and (3, 1, 2).',
-        whyOthersIncorrect: [
-          '6 includes the identity (1, 2, 3) and single-element swaps like (1, 3, 2) where element 1 is fixed.',
-          '(3, 2, 1) leaves element 2 in its original 2nd position, so it is not a derangement.',
-          'Derangements exist for all n ≥ 2.',
         ],
       },
     ],

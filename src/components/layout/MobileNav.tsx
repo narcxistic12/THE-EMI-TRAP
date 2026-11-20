@@ -9,7 +9,6 @@ import {
   BookOpen,
   Info,
   Database,
-  Palette,
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
@@ -18,7 +17,6 @@ interface MobileNavProps {
   onClose: () => void;
   onOpenAbout: () => void;
   onOpenSources: () => void;
-  onOpenTheme: () => void;
 }
 
 export const MobileNav: React.FC<MobileNavProps> = ({
@@ -26,7 +24,6 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   onClose,
   onOpenAbout,
   onOpenSources,
-  onOpenTheme,
 }) => {
   if (!isOpen) return null;
 
@@ -52,17 +49,17 @@ export const MobileNav: React.FC<MobileNavProps> = ({
           {/* Header */}
           <div className="flex items-center justify-between p-5 border-b border-surface-border">
             <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-sm border border-brand/40 bg-brand-soft/40 flex items-center justify-center text-brand">
-                <span className="font-serif font-bold text-xs">∏</span>
+              <div className="w-8 h-8 rounded-sm border border-brand/40 bg-brand-soft/40 flex items-center justify-center text-brand">
+                <span className="font-serif font-bold text-sm">∏</span>
               </div>
               <div>
-                <h2 className="text-xs font-bold tracking-widest uppercase text-content-primary">THE EMI TRAP</h2>
-                <p className="text-[9px] font-mono tracking-widest uppercase text-content-muted">Research Platform</p>
+                <h2 className="text-sm font-bold tracking-wider uppercase text-content-primary">THE EMI TRAP</h2>
+                <p className="text-xs font-mono tracking-wider uppercase text-content-muted">Research Platform</p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-1 rounded-btn text-content-muted hover:text-content-primary hover:bg-surface-secondary"
+              className="p-1.5 rounded-btn text-content-muted hover:text-content-primary hover:bg-surface-secondary"
             >
               <X className="w-4 h-4" />
             </button>
@@ -70,7 +67,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
 
           {/* Navigation Links */}
           <nav className="p-3 space-y-1">
-            <p className="px-3 pt-2 pb-1.5 text-[9px] font-semibold uppercase tracking-widest text-content-muted">
+            <p className="px-3 pt-2 pb-1.5 text-xs font-semibold uppercase tracking-wider text-content-muted">
               Platform Sections
             </p>
             {navItems.map((item) => {
@@ -82,18 +79,18 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                   onClick={onClose}
                   className={({ isActive }) =>
                     cn(
-                      'flex items-center justify-between px-3 py-2.5 rounded-btn text-xs transition-colors',
+                      'flex items-center justify-between px-3.5 py-3 rounded-btn text-sm font-medium transition-colors',
                       isActive
-                        ? 'bg-surface-secondary text-content-primary font-medium border border-surface-border'
+                        ? 'bg-surface-secondary text-content-primary font-semibold border border-surface-border'
                         : 'text-content-secondary hover:text-content-primary hover:bg-surface-secondary/60'
                     )
                   }
                 >
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-3">
                     <Icon className="w-4 h-4 text-brand" />
                     <span>{item.label}</span>
                   </div>
-                  <span className="text-[10px] font-mono text-content-muted">{item.number}</span>
+                  <span className="text-xs font-mono text-content-muted">{item.number}</span>
                 </NavLink>
               );
             })}
@@ -107,9 +104,9 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               onClose();
               onOpenAbout();
             }}
-            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-btn text-xs text-content-secondary hover:text-content-primary text-left"
+            className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-btn text-xs sm:text-sm text-content-secondary hover:text-content-primary text-left font-medium"
           >
-            <Info className="w-3.5 h-3.5 text-content-muted" />
+            <Info className="w-4 h-4 text-content-muted" />
             <span>About Project</span>
           </button>
           <button
@@ -117,20 +114,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               onClose();
               onOpenSources();
             }}
-            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-btn text-xs text-content-secondary hover:text-content-primary text-left"
+            className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-btn text-xs sm:text-sm text-content-secondary hover:text-content-primary text-left font-medium"
           >
-            <Database className="w-3.5 h-3.5 text-content-muted" />
+            <Database className="w-4 h-4 text-content-muted" />
             <span>Data Sources</span>
-          </button>
-          <button
-            onClick={() => {
-              onClose();
-              onOpenTheme();
-            }}
-            className="w-full flex items-center gap-2.5 px-3 py-2 rounded-btn text-xs text-content-secondary hover:text-content-primary text-left"
-          >
-            <Palette className="w-3.5 h-3.5 text-content-muted" />
-            <span>Theme Tokens</span>
           </button>
         </div>
       </div>

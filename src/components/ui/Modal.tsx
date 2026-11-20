@@ -41,16 +41,16 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop with quiet blur */}
+      {/* Backdrop with optical blur */}
       <div
-        className="fixed inset-0 bg-content-primary/30 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-content-primary/30 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 
-      {/* Modal Surface */}
+      {/* Liquid Glass Modal Surface */}
       <div
         className={cn(
-          'relative w-full bg-surface rounded-panel border border-surface-border shadow-elevated z-10 overflow-hidden flex flex-col max-h-[90vh]',
+          'relative w-full glass-modal rounded-panel z-10 overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200',
           maxWidth === 'sm' && 'max-w-md',
           maxWidth === 'md' && 'max-w-xl',
           maxWidth === 'lg' && 'max-w-2xl',
