@@ -53,35 +53,35 @@ export const SummaryPanel: React.FC<SummaryPanelProps> = ({ summary, commitments
   return (
     <div className="space-y-4">
       {/* 3 Metric Cards with Spotlight Liquid Glass Lensing */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {/* Card 1: Total Monthly EMI */}
-        <SpotlightCard className="p-5 sm:p-6">
-          <div className="flex items-center justify-between text-content-muted mb-2.5">
-            <span className="text-xs sm:text-sm font-mono uppercase tracking-wider">Total Monthly EMI</span>
-            <CreditCard className="w-4 h-4 text-brand" />
+        <SpotlightCard className="p-3.5 sm:p-4 xl:p-5 min-w-0 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-content-muted mb-2 gap-1.5">
+            <span className="text-xs font-mono uppercase tracking-wider truncate">Total Monthly EMI</span>
+            <CreditCard className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand shrink-0" />
           </div>
-          <div className="text-2xl sm:text-3xl lg:text-4xl font-mono font-medium tracking-tight text-content-primary">
+          <div className="text-xl sm:text-2xl xl:text-3xl font-mono font-medium tracking-tight text-content-primary whitespace-nowrap overflow-hidden text-ellipsis">
             <AnimatedCounter value={totalMonthlyEmi} prefix="₹" />
           </div>
-          <p className="text-xs sm:text-sm text-content-secondary mt-1.5">
+          <p className="text-xs text-content-secondary mt-1.5 truncate">
             Across {commitments.length} active {commitments.length === 1 ? 'loan' : 'loans'}
           </p>
         </SpotlightCard>
 
         {/* Card 2: Percentage of Income Committed */}
-        <SpotlightCard className="p-5 sm:p-6">
-          <div className="flex items-center justify-between text-content-muted mb-2.5">
-            <span className="text-xs sm:text-sm font-mono uppercase tracking-wider">Income Committed</span>
-            <Percent className="w-4 h-4 text-brand" />
+        <SpotlightCard className="p-3.5 sm:p-4 xl:p-5 min-w-0 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-content-muted mb-2 gap-1.5">
+            <span className="text-xs font-mono uppercase tracking-wider truncate">Income Committed</span>
+            <Percent className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand shrink-0" />
           </div>
-          <div className="text-2xl sm:text-3xl lg:text-4xl font-mono font-medium tracking-tight text-content-primary">
+          <div className="text-xl sm:text-2xl xl:text-3xl font-mono font-medium tracking-tight text-content-primary whitespace-nowrap overflow-hidden text-ellipsis">
             {incomeCommittedPercentage !== null ? (
               <AnimatedCounter value={incomeCommittedPercentage} suffix="%" decimals={1} />
             ) : (
               '—'
             )}
           </div>
-          <p className="text-xs sm:text-sm text-content-secondary mt-1.5">
+          <p className="text-xs text-content-secondary mt-1.5 truncate">
             {monthlyIncome > 0
               ? `Of ${formatINR(monthlyIncome)} take-home`
               : 'Enter income to calculate'}
@@ -89,19 +89,19 @@ export const SummaryPanel: React.FC<SummaryPanelProps> = ({ summary, commitments
         </SpotlightCard>
 
         {/* Card 3: Remaining Income */}
-        <SpotlightCard className="p-5 sm:p-6">
-          <div className="flex items-center justify-between text-content-muted mb-2.5">
-            <span className="text-xs sm:text-sm font-mono uppercase tracking-wider">Remaining Cash</span>
-            <Wallet className="w-4 h-4 text-brand" />
+        <SpotlightCard className="p-3.5 sm:p-4 xl:p-5 min-w-0 flex flex-col justify-between">
+          <div className="flex items-center justify-between text-content-muted mb-2 gap-1.5">
+            <span className="text-xs font-mono uppercase tracking-wider truncate">Remaining Cash</span>
+            <Wallet className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand shrink-0" />
           </div>
           <div
-            className={`text-2xl sm:text-3xl lg:text-4xl font-mono font-medium tracking-tight ${
+            className={`text-xl sm:text-2xl xl:text-3xl font-mono font-medium tracking-tight whitespace-nowrap overflow-hidden text-ellipsis ${
               remainingIncome < 0 ? 'text-semantic-danger' : 'text-content-primary'
             }`}
           >
             <AnimatedCounter value={remainingIncome} prefix="₹" />
           </div>
-          <p className="text-xs sm:text-sm text-content-secondary mt-1.5">
+          <p className="text-xs text-content-secondary mt-1.5 truncate">
             {remainingIncome < 0 ? 'Monthly deficit' : 'Left for living costs'}
           </p>
         </SpotlightCard>

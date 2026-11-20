@@ -307,23 +307,23 @@ export const CommitmentManager: React.FC<CommitmentManagerProps> = ({
                     key={commitment.id}
                     className="p-4 flex items-center justify-between hover:bg-surface-secondary/20 transition-colors"
                   >
-                    <div className="flex items-center gap-3.5">
+                    <div className="flex items-center gap-3.5 min-w-0 flex-1 mr-2">
                       <span className="w-6 h-6 rounded-sm bg-surface-secondary border border-surface-border text-content-muted font-mono text-xs flex items-center justify-center shrink-0">
                         {String(index + 1).padStart(2, '0')}
                       </span>
-                      <div>
-                        <p className="text-sm sm:text-base font-medium text-content-primary">
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm sm:text-base font-medium text-content-primary truncate">
                           {commitment.name}
                         </p>
                         {commitment.tenureMonths && (
-                          <p className="text-xs sm:text-sm font-mono text-content-muted">
+                          <p className="text-xs sm:text-sm font-mono text-content-muted truncate">
                             {commitment.tenureMonths} months remaining
                           </p>
                         )}
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3.5">
+                    <div className="flex items-center gap-3.5 shrink-0">
                       <span className="font-mono text-sm sm:text-base font-semibold text-content-primary">
                         {formatINR(commitment.monthlyAmount)}
                         <span className="text-xs text-content-muted font-normal"> /mo</span>

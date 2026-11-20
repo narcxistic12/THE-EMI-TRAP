@@ -54,7 +54,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
         }}
         aria-hidden="true"
       />
-      <div className="relative z-1">{children}</div>
+      <div className="relative z-1 w-full min-w-0">{children}</div>
     </div>
   );
 };

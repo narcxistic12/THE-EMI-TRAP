@@ -63,9 +63,9 @@ export const EMICalculator: React.FC = () => {
       </div>
 
       {/* 2-Column Responsive Layout (DESIGN.md Section 5.1) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* Left Column: Inputs Workspace */}
-        <div className="lg:col-span-6 space-y-6">
+        <div className="xl:col-span-6 space-y-6 min-w-0">
           <IncomeInput income={income} onIncomeChange={setIncome} />
 
           <CommitmentManager
@@ -79,7 +79,7 @@ export const EMICalculator: React.FC = () => {
         </div>
 
         {/* Right Column: Live Results & What-If Simulator */}
-        <div className="lg:col-span-6 space-y-6">
+        <div className="xl:col-span-6 space-y-6 min-w-0">
           <SummaryPanel summary={summary} commitments={commitments} />
 
           <WhatIfSimulator income={income} commitments={commitments} />

@@ -248,54 +248,54 @@ export const ResearchDashboard: React.FC = () => {
         <div className="space-y-8">
           {/* Key Aggregate Research Metric Cards with Spotlight Lensing & Animated Figures */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <SpotlightCard className="p-5 sm:p-6 space-y-1.5">
-              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-content-muted flex items-center gap-1.5 font-semibold">
-                <Users className="w-3.5 h-3.5 text-brand" /> Valid Responses (N)
+            <SpotlightCard className="p-4 sm:p-5 min-w-0 space-y-1.5">
+              <span className="text-xs font-mono uppercase tracking-wider text-content-muted flex items-center gap-1.5 font-semibold truncate">
+                <Users className="w-3.5 h-3.5 text-brand shrink-0" /> Valid Responses (N)
               </span>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-mono font-medium text-content-primary pt-1">
+              <div className="text-xl sm:text-2xl xl:text-3xl font-mono font-medium text-content-primary pt-1 whitespace-nowrap">
                 <AnimatedCounter value={activeSetData.totalRespondents} />
               </div>
-              <p className="text-xs sm:text-sm text-content-secondary font-serif">
+              <p className="text-xs text-content-secondary font-serif truncate">
                 {activeDataset?.excludedCount ? `${activeDataset.excludedCount} excluded duplicates` : '100% clean responses'}
               </p>
             </SpotlightCard>
 
-            <SpotlightCard className="p-5 sm:p-6 space-y-1.5">
-              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-content-muted flex items-center gap-1.5 font-semibold">
-                <Layers className="w-3.5 h-3.5 text-brand" /> Unique Debtors |A∪B∪C|
+            <SpotlightCard className="p-4 sm:p-5 min-w-0 space-y-1.5">
+              <span className="text-xs font-mono uppercase tracking-wider text-content-muted flex items-center gap-1.5 font-semibold truncate">
+                <Layers className="w-3.5 h-3.5 text-brand shrink-0" /> Unique Debtors |A∪B∪C|
               </span>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-mono font-medium text-content-primary pt-1">
+              <div className="text-xl sm:text-2xl xl:text-3xl font-mono font-medium text-content-primary pt-1 whitespace-nowrap">
                 <AnimatedCounter value={pie.atLeastOne} />
               </div>
-              <p className="text-xs sm:text-sm text-content-secondary font-serif">
+              <p className="text-xs text-content-secondary font-serif truncate">
                 {activeSetData.totalRespondents > 0
                   ? `${((pie.atLeastOne / activeSetData.totalRespondents) * 100).toFixed(1)}% in selected sets`
                   : '0%'}
               </p>
             </SpotlightCard>
 
-            <SpotlightCard className="p-5 sm:p-6 space-y-1.5">
-              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-content-muted flex items-center gap-1.5 font-semibold">
-                <ShieldAlert className="w-3.5 h-3.5 text-[#C18428]" /> Multi-Loan Overlap (≥2)
+            <SpotlightCard className="p-4 sm:p-5 min-w-0 space-y-1.5">
+              <span className="text-xs font-mono uppercase tracking-wider text-content-muted flex items-center gap-1.5 font-semibold truncate">
+                <ShieldAlert className="w-3.5 h-3.5 text-[#C18428] shrink-0" /> Multi-Loan Overlap (≥2)
               </span>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-mono font-medium text-content-primary pt-1">
+              <div className="text-xl sm:text-2xl xl:text-3xl font-mono font-medium text-content-primary pt-1 whitespace-nowrap">
                 <AnimatedCounter value={pie.atLeastTwo} />
               </div>
-              <p className="text-xs sm:text-sm text-content-secondary font-serif">
+              <p className="text-xs text-content-secondary font-serif truncate">
                 {activeSetData.totalRespondents > 0
                   ? `${((pie.atLeastTwo / activeSetData.totalRespondents) * 100).toFixed(1)}% multiple commitments`
                   : '0%'}
               </p>
             </SpotlightCard>
 
-            <SpotlightCard className="p-5 sm:p-6 space-y-1.5">
-              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-content-muted flex items-center gap-1.5 font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-brand" /> Core EMI Trap (|A∩B∩C|)
+            <SpotlightCard className="p-4 sm:p-5 min-w-0 space-y-1.5">
+              <span className="text-xs font-mono uppercase tracking-wider text-content-muted flex items-center gap-1.5 font-semibold truncate">
+                <Sparkles className="w-3.5 h-3.5 text-brand shrink-0" /> Core EMI Trap (|A∩B∩C|)
               </span>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-mono font-medium text-content-primary pt-1">
+              <div className="text-xl sm:text-2xl xl:text-3xl font-mono font-medium text-content-primary pt-1 whitespace-nowrap">
                 <AnimatedCounter value={pie.allThree} />
               </div>
-              <p className="text-xs sm:text-sm text-content-secondary font-serif">
+              <p className="text-xs text-content-secondary font-serif truncate">
                 Triple concurrency cohort
               </p>
             </SpotlightCard>

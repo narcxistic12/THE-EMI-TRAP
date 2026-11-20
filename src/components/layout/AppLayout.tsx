@@ -62,12 +62,12 @@ export const AppLayout: React.FC = () => {
             onToggleMobileNav={() => setMobileNavOpen(true)}
           />
 
-        <main className="flex-1 max-w-[1440px] w-full mx-auto px-6 sm:px-12 py-8 sm:py-10">
+        <main className="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <Outlet />
         </main>
 
         {/* Global Footer Disclaimer in Liquid Glass Style */}
-        <footer className="border-t border-surface-border/60 glass-plate py-8 px-6 sm:px-12 text-content-muted mt-auto">
+        <footer className="border-t border-surface-border/60 glass-plate py-8 px-4 sm:px-6 lg:px-8 text-content-muted mt-auto">
           <div className="max-w-4xl mx-auto space-y-2.5 text-center">
             <div className="flex items-center justify-center gap-2 text-content-secondary font-serif text-sm sm:text-base">
               <span>THE EMI TRAP</span>
